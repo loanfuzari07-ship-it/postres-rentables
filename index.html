@@ -2110,6 +2110,58 @@
 }
 </style>
 
+
+<style id="postres-loop-fix">
+/* Novo carrossel isolado: não depende de nenhuma regra antiga */
+.pr-loop{
+  width:100%;
+  overflow:hidden;
+  position:relative;
+  padding:4px 0 10px;
+}
+
+.pr-loop-track{
+  display:flex;
+  flex-direction:row;
+  align-items:stretch;
+  gap:12px;
+  width:max-content;
+  transform:translate3d(0,0,0);
+  will-change:transform;
+}
+
+.pr-loop-card{
+  flex:0 0 245px;
+  width:245px;
+  aspect-ratio:1448/1086;
+  overflow:hidden;
+  border-radius:22px;
+  background:#f7eee8;
+}
+
+.pr-loop-card img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+}
+
+@media (max-width:430px){
+  .pr-loop-card{
+    flex-basis:220px;
+    width:220px;
+  }
+}
+
+@media (max-width:360px){
+  .pr-loop-card{
+    flex-basis:205px;
+    width:205px;
+  }
+}
+</style>
+
 </head>
 
 <body>
@@ -2527,110 +2579,29 @@
           <h2>ALGUNOS DE LOS POSTRES QUE PODRÁS APRENDER Y VENDER</h2>
         </div>
 
-        <div class="pv-marquee" aria-label="Postres del método">
-          <div class="pv-marquee-track">
-            <div class="pv-marquee-group">
-              <article class="dessert-card">
-                <div class="dessert-image">
-                  <img src="images/postre1.webp" alt="Cheesecake de Fresa"
-                       onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
-                  <span class="dessert-fallback-emoji">🍓</span>
-                </div>
-              </article>
-              <article class="dessert-card">
-                <div class="dessert-image">
-                  <img src="images/postre2.webp" alt="Brownies"
-                       onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
-                  <span class="dessert-fallback-emoji">🍫</span>
-                </div>
-              </article>
-              <article class="dessert-card">
-                <div class="dessert-image">
-                  <img src="images/postre3.webp" alt="Cookies"
-                       onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
-                  <span class="dessert-fallback-emoji">🍪</span>
-                </div>
-              </article>
-              <article class="dessert-card">
-                <div class="dessert-image">
-                  <img src="images/postre4.webp" alt="Mousses"
-                       onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
-                  <span class="dessert-fallback-emoji">🍨</span>
-                </div>
-              </article>
-              <article class="dessert-card">
-                <div class="dessert-image">
-                  <img src="images/postre5.webp" alt="Panna Cotta"
-                       onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
-                  <span class="dessert-fallback-emoji">🍮</span>
-                </div>
-              </article>
-              <article class="dessert-card">
-                <div class="dessert-image">
-                  <img src="images/postre6.webp" alt="Gelatinas Gourmet"
-                       onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
-                  <span class="dessert-fallback-emoji">✨</span>
-                </div>
-              </article>
-              <article class="dessert-card">
-                <div class="dessert-image">
-                  <img src="images/postre7.webp" alt="Tres Chocolates"
-                       onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
-                  <span class="dessert-fallback-emoji">🍫</span>
-                </div>
-              </article>
-            </div>
-            <div class="pv-marquee-group" aria-hidden="true">
-              <article class="dessert-card">
-                <div class="dessert-image">
-                  <img src="images/postre1.webp" alt="Cheesecake de Fresa"
-                       onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
-                  <span class="dessert-fallback-emoji">🍓</span>
-                </div>
-              </article>
-              <article class="dessert-card">
-                <div class="dessert-image">
-                  <img src="images/postre2.webp" alt="Brownies"
-                       onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
-                  <span class="dessert-fallback-emoji">🍫</span>
-                </div>
-              </article>
-              <article class="dessert-card">
-                <div class="dessert-image">
-                  <img src="images/postre3.webp" alt="Cookies"
-                       onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
-                  <span class="dessert-fallback-emoji">🍪</span>
-                </div>
-              </article>
-              <article class="dessert-card">
-                <div class="dessert-image">
-                  <img src="images/postre4.webp" alt="Mousses"
-                       onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
-                  <span class="dessert-fallback-emoji">🍨</span>
-                </div>
-              </article>
-              <article class="dessert-card">
-                <div class="dessert-image">
-                  <img src="images/postre5.webp" alt="Panna Cotta"
-                       onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
-                  <span class="dessert-fallback-emoji">🍮</span>
-                </div>
-              </article>
-              <article class="dessert-card">
-                <div class="dessert-image">
-                  <img src="images/postre6.webp" alt="Gelatinas Gourmet"
-                       onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
-                  <span class="dessert-fallback-emoji">✨</span>
-                </div>
-              </article>
-              <article class="dessert-card">
-                <div class="dessert-image">
-                  <img src="images/postre7.webp" alt="Tres Chocolates"
-                       onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
-                  <span class="dessert-fallback-emoji">🍫</span>
-                </div>
-              </article>
-            </div>
+        <div class="pr-loop" id="postresLoop">
+          <div class="pr-loop-track" id="postresLoopTrack">
+          <div class="pr-loop-card">
+            <img src="images/postre1.webp" alt="Postre 1">
+          </div>
+          <div class="pr-loop-card">
+            <img src="images/postre2.webp" alt="Postre 2">
+          </div>
+          <div class="pr-loop-card">
+            <img src="images/postre3.webp" alt="Postre 3">
+          </div>
+          <div class="pr-loop-card">
+            <img src="images/postre4.webp" alt="Postre 4">
+          </div>
+          <div class="pr-loop-card">
+            <img src="images/postre5.webp" alt="Postre 5">
+          </div>
+          <div class="pr-loop-card">
+            <img src="images/postre6.webp" alt="Postre 6">
+          </div>
+          <div class="pr-loop-card">
+            <img src="images/postre7.webp" alt="Postre 7">
+          </div>
           </div>
         </div>
       </section>
@@ -3129,108 +3100,71 @@
 
 
 
-<script>
+
+
+
+<script id="postres-loop-script">
 (function(){
-  const viewport = document.querySelector(".pv-marquee");
-  const track = document.querySelector(".pv-marquee-track");
+  const viewport = document.getElementById("postresLoop");
+  const track = document.getElementById("postresLoopTrack");
   if(!viewport || !track) return;
 
-  let position = 0;
+  let offset = 0;
   let lastTime = performance.now();
-  let running = true;
-  const speed = 46; // px por segundo
+  const speed = 48; // px/s
 
-  function halfWidth(){
-    return track.scrollWidth / 2;
+  function gapSize(){
+    const s = getComputedStyle(track);
+    return parseFloat(s.columnGap || s.gap || "12") || 12;
   }
 
-  function syncPosition(){
-    const half = halfWidth();
-    if(half > 0){
-      position = position % half;
-      viewport.scrollLeft = Math.round(position);
-    }
+  function firstStep(){
+    const first = track.firstElementChild;
+    if(!first) return 0;
+    return first.getBoundingClientRect().width + gapSize();
   }
 
-  function animate(now){
+  function isUsable(){
+    return viewport.getBoundingClientRect().width > 0 &&
+           track.children.length > 1;
+  }
+
+  function frame(now){
     const dt = Math.min((now - lastTime) / 1000, 0.05);
     lastTime = now;
 
-    const half = halfWidth();
+    if(isUsable()){
+      offset += speed * dt;
 
-    if(running && half > viewport.clientWidth && viewport.clientWidth > 0){
-      position += speed * dt;
+      let step = firstStep();
 
-      if(position >= half){
-        position -= half;
+      // Quando o primeiro card saiu completamente,
+      // ele vai instantaneamente para o fim da fila.
+      // Assim nunca existe "última imagem".
+      while(step > 0 && offset >= step){
+        offset -= step;
+        track.appendChild(track.firstElementChild);
+        step = firstStep();
       }
 
-      viewport.scrollLeft = Math.round(position);
+      track.style.transform = `translate3d(${-offset}px,0,0)`;
     }
 
-    requestAnimationFrame(animate);
+    requestAnimationFrame(frame);
   }
 
-  function waitForImages(){
-    const imgs = track.querySelectorAll("img");
-    if(!imgs.length){
-      syncPosition();
-      return;
-    }
-
-    let pending = 0;
-
-    imgs.forEach(img => {
-      if(!img.complete){
-        pending++;
-        const done = () => {
-          pending--;
-          if(pending <= 0) syncPosition();
-        };
-        img.addEventListener("load", done, {once:true});
-        img.addEventListener("error", done, {once:true});
+  // Se a PV estava escondida durante o quiz, isso garante
+  // que o relógio reinicie quando ela aparecer.
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        lastTime = performance.now();
       }
     });
+  }, {threshold:0.01});
+  observer.observe(viewport);
 
-    if(pending === 0) syncPosition();
-  }
-
-  if("IntersectionObserver" in window){
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        running = entry.isIntersecting;
-        if(running){
-          syncPosition();
-          lastTime = performance.now();
-        }
-      });
-    }, {threshold:0.01});
-
-    observer.observe(viewport);
-  }
-
-  if("ResizeObserver" in window){
-    const ro = new ResizeObserver(() => syncPosition());
-    ro.observe(viewport);
-    ro.observe(track);
-  }
-
-  window.addEventListener("load", () => {
-    waitForImages();
-    syncPosition();
-  }, {once:true});
-
-  window.addEventListener("resize", syncPosition);
-  window.addEventListener("orientationchange", () => setTimeout(syncPosition, 250));
-
-  // Recalcula quando o usuário avança nas etapas do quiz
-  document.addEventListener("click", () => {
-    setTimeout(syncPosition, 250);
-    setTimeout(syncPosition, 800);
-  }, true);
-
-  waitForImages();
-  requestAnimationFrame(animate);
+  requestAnimationFrame(frame);
 })();
 </script>
 
