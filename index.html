@@ -1989,9 +1989,38 @@
     }
 
     @media (prefers-reduced-motion:reduce){
-      .pv-marquee-track{
-        animation:postresLoop 58s linear infinite !important;
-      }
+      .pv-marquee-track{animation:none !important;}
+    }
+
+
+    /* ======================================================
+       ESTEIRA DE POSTRES — LOOP CONTÍNUO VIA JAVASCRIPT
+       ====================================================== */
+    .pv-marquee{
+      width:100%;
+      overflow:hidden;
+      position:relative;
+      padding:2px 0 10px;
+    }
+
+    .pv-marquee-track{
+      display:flex !important;
+      width:max-content !important;
+      gap:0 !important;
+      animation:none !important;
+      will-change:transform;
+      transform:translate3d(0,0,0);
+    }
+
+    .pv-marquee-group{
+      display:flex;
+      flex-shrink:0;
+      gap:12px;
+      padding-right:12px;
+    }
+
+    .pv-marquee:hover .pv-marquee-track{
+      animation:none !important;
     }
 
 </style>
@@ -3007,6 +3036,75 @@
   }
 
 })();
+</script>
+<script>
+
+  /* ==========================================================
+     LOOP CONTÍNUO DO CARROSSEL DE POSTRES
+     ========================================================== */
+  (function(){
+    const marquee = document.querySelector(".pv-marquee");
+    const track = document.querySelector(".pv-marquee-track");
+    if(!marquee || !track) return;
+
+    const groups = track.querySelectorAll(".pv-marquee-group");
+    if(groups.length < 2) return;
+
+    let x = 0;
+    let last = performance.now();
+    let groupWidth = 0;
+    const speed = 28; // pixels por segundo: lento e suave
+
+    function measure(){
+      groupWidth = groups[0].getBoundingClientRect().width;
+    }
+
+    function tick(now){
+      const dt = Math.min((now - last) / 1000, 0.05);
+      last = now;
+
+      if(groupWidth > 0){
+        x -= speed * dt;
+
+        // Quando um grupo inteiro saiu, volta exatamente 1 largura.
+        // Como o segundo grupo é idêntico, o usuário não percebe o reset.
+        if(-x >= groupWidth){
+          x += groupWidth;
+        }
+
+        track.style.transform = `translate3d(${x}px,0,0)`;
+      }
+
+      requestAnimationFrame(tick);
+    }
+
+    // Mede após imagens carregarem.
+    function start(){
+      measure();
+      last = performance.now();
+      requestAnimationFrame(tick);
+    }
+
+    if(document.readyState === "complete"){
+      start();
+    } else {
+      window.addEventListener("load", start, {once:true});
+    }
+
+    // Recalcula em rotação/redimensionamento sem criar buracos.
+    let resizeTimer;
+    window.addEventListener("resize", () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        measure();
+        if(groupWidth > 0){
+          x = x % groupWidth;
+          track.style.transform = `translate3d(${x}px,0,0)`;
+        }
+      }, 120);
+    });
+  })();
+
 </script>
 </body>
 </html>
