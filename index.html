@@ -2036,6 +2036,47 @@
 }
 </style>
 
+
+<style>
+/* LOOP DE POSTRES — versão estável para Safari/iPhone */
+.pv-marquee{
+  width:100% !important;
+  overflow:hidden !important;
+  position:relative;
+  padding:2px 0 10px;
+  scroll-behavior:auto !important;
+}
+
+.pv-marquee-track{
+  display:flex !important;
+  width:max-content !important;
+  gap:0 !important;
+  transform:none !important;
+  animation:none !important;
+  will-change:auto !important;
+}
+
+.pv-marquee-group{
+  display:flex !important;
+  flex:none !important;
+  gap:12px !important;
+  padding-right:12px !important;
+  width:max-content !important;
+}
+
+.pv-marquee:hover .pv-marquee-track{
+  animation:none !important;
+}
+
+@media (max-width:430px){
+  .dessert-card{flex:0 0 220px !important;}
+}
+
+@media (max-width:360px){
+  .dessert-card{flex:0 0 205px !important;}
+}
+</style>
+
 </head>
 
 <body>
@@ -3049,94 +3090,55 @@
 </script>
 
 
+
+
+
 <script>
-/* ==========================================================
-   LOOP INFINITO ROBUSTO DO CARROSSEL DE POSTRES
-   - funciona mesmo quando a PV inicia escondida
-   - recalcula quando fica visível
-   - sem espaço vazio no final
-   ========================================================== */
 (function(){
-  const marquee = document.querySelector(".pv-marquee");
+  const viewport = document.querySelector(".pv-marquee");
   const track = document.querySelector(".pv-marquee-track");
-  if(!marquee || !track) return;
+  if(!viewport || !track) return;
 
-  const groups = track.querySelectorAll(".pv-marquee-group");
-  if(groups.length < 2) return;
-
-  let x = 0;
-  let groupWidth = 0;
   let last = performance.now();
-  let lastMeasure = 0;
-  const speed = 44;
+  const speed = 42; // px/s
 
-  function isVisible(){
-    const r = marquee.getBoundingClientRect();
-    return r.width > 0 && r.height > 0 &&
-           r.bottom > 0 && r.top < window.innerHeight;
-  }
-
-  function measure(){
-    const w = groups[0].scrollWidth || groups[0].getBoundingClientRect().width;
-    if(w > 0){
-      groupWidth = w;
-
-      // Normaliza a posição caso a largura tenha mudado.
-      if(x <= -groupWidth || x > 0){
-        x = -((Math.abs(x)) % groupWidth);
-      }
-    }
+  function loopWidth(){
+    return track.scrollWidth / 2;
   }
 
   function tick(now){
     const dt = Math.min((now - last) / 1000, 0.05);
     last = now;
 
-    // Recalcula periodicamente. Isso resolve telas/etapas que começam display:none.
-    if(now - lastMeasure > 500){
-      measure();
-      lastMeasure = now;
-    }
+    const half = loopWidth();
 
-    if(isVisible() && groupWidth > 0){
-      x -= speed * dt;
+    if(half > 0 && viewport.clientWidth > 0){
+      viewport.scrollLeft += speed * dt;
 
-      // Nunca deixa a primeira sequência inteira desaparecer.
-      while(-x >= groupWidth){
-        x += groupWidth;
+      if(viewport.scrollLeft >= half){
+        viewport.scrollLeft -= half;
       }
-
-      track.style.transform = `translate3d(${x}px,0,0)`;
     }
 
     requestAnimationFrame(tick);
   }
 
-  // Recalcula assim que o elemento mudar de tamanho/ficar visível.
-  if("ResizeObserver" in window){
-    const ro = new ResizeObserver(() => measure());
-    ro.observe(marquee);
-    ro.observe(groups[0]);
+  function normalize(){
+    const half = loopWidth();
+    if(half > 0 && viewport.scrollLeft >= half){
+      viewport.scrollLeft = viewport.scrollLeft % half;
+    }
   }
 
-  if("IntersectionObserver" in window){
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          measure();
-          last = performance.now();
-        }
-      });
-    }, {threshold:0.01});
-    io.observe(marquee);
-  }
+  window.addEventListener("load", normalize, {once:true});
+  window.addEventListener("resize", normalize);
+  window.addEventListener("orientationchange", () => setTimeout(normalize, 200));
 
-  window.addEventListener("load", measure, {once:true});
-  window.addEventListener("resize", measure);
-  window.addEventListener("orientationchange", () => setTimeout(measure, 200));
-
-  // Também mede após qualquer troca de tela do quiz.
-  document.addEventListener("click", () => setTimeout(measure, 350), true);
+  // Quando a etapa da PV aparece depois do quiz
+  document.addEventListener("click", () => {
+    setTimeout(normalize, 250);
+    setTimeout(normalize, 700);
+  }, true);
 
   requestAnimationFrame(tick);
 })();
