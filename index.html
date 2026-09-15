@@ -2077,6 +2077,39 @@
 }
 </style>
 
+
+<style>
+/* ESTEIRA DE POSTRES — Safari/iPhone fix */
+.pv-marquee{
+  width:100% !important;
+  overflow-x:auto !important;
+  overflow-y:hidden !important;
+  -webkit-overflow-scrolling:auto !important;
+  scrollbar-width:none !important;
+  scroll-behavior:auto !important;
+  position:relative !important;
+}
+.pv-marquee::-webkit-scrollbar{
+  display:none !important;
+  width:0 !important;
+  height:0 !important;
+}
+.pv-marquee-track{
+  display:flex !important;
+  width:max-content !important;
+  min-width:max-content !important;
+  transform:none !important;
+  animation:none !important;
+}
+.pv-marquee-group{
+  display:flex !important;
+  flex:none !important;
+  width:max-content !important;
+  gap:12px !important;
+  padding-right:12px !important;
+}
+</style>
+
 </head>
 
 <body>
@@ -3093,54 +3126,111 @@
 
 
 
+
+
+
 <script>
 (function(){
   const viewport = document.querySelector(".pv-marquee");
   const track = document.querySelector(".pv-marquee-track");
   if(!viewport || !track) return;
 
-  let last = performance.now();
-  const speed = 42; // px/s
+  let position = 0;
+  let lastTime = performance.now();
+  let running = true;
+  const speed = 46; // px por segundo
 
-  function loopWidth(){
+  function halfWidth(){
     return track.scrollWidth / 2;
   }
 
-  function tick(now){
-    const dt = Math.min((now - last) / 1000, 0.05);
-    last = now;
+  function syncPosition(){
+    const half = halfWidth();
+    if(half > 0){
+      position = position % half;
+      viewport.scrollLeft = Math.round(position);
+    }
+  }
 
-    const half = loopWidth();
+  function animate(now){
+    const dt = Math.min((now - lastTime) / 1000, 0.05);
+    lastTime = now;
 
-    if(half > 0 && viewport.clientWidth > 0){
-      viewport.scrollLeft += speed * dt;
+    const half = halfWidth();
 
-      if(viewport.scrollLeft >= half){
-        viewport.scrollLeft -= half;
+    if(running && half > viewport.clientWidth && viewport.clientWidth > 0){
+      position += speed * dt;
+
+      if(position >= half){
+        position -= half;
       }
+
+      viewport.scrollLeft = Math.round(position);
     }
 
-    requestAnimationFrame(tick);
+    requestAnimationFrame(animate);
   }
 
-  function normalize(){
-    const half = loopWidth();
-    if(half > 0 && viewport.scrollLeft >= half){
-      viewport.scrollLeft = viewport.scrollLeft % half;
+  function waitForImages(){
+    const imgs = track.querySelectorAll("img");
+    if(!imgs.length){
+      syncPosition();
+      return;
     }
+
+    let pending = 0;
+
+    imgs.forEach(img => {
+      if(!img.complete){
+        pending++;
+        const done = () => {
+          pending--;
+          if(pending <= 0) syncPosition();
+        };
+        img.addEventListener("load", done, {once:true});
+        img.addEventListener("error", done, {once:true});
+      }
+    });
+
+    if(pending === 0) syncPosition();
   }
 
-  window.addEventListener("load", normalize, {once:true});
-  window.addEventListener("resize", normalize);
-  window.addEventListener("orientationchange", () => setTimeout(normalize, 200));
+  if("IntersectionObserver" in window){
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        running = entry.isIntersecting;
+        if(running){
+          syncPosition();
+          lastTime = performance.now();
+        }
+      });
+    }, {threshold:0.01});
 
-  // Quando a etapa da PV aparece depois do quiz
+    observer.observe(viewport);
+  }
+
+  if("ResizeObserver" in window){
+    const ro = new ResizeObserver(() => syncPosition());
+    ro.observe(viewport);
+    ro.observe(track);
+  }
+
+  window.addEventListener("load", () => {
+    waitForImages();
+    syncPosition();
+  }, {once:true});
+
+  window.addEventListener("resize", syncPosition);
+  window.addEventListener("orientationchange", () => setTimeout(syncPosition, 250));
+
+  // Recalcula quando o usuário avança nas etapas do quiz
   document.addEventListener("click", () => {
-    setTimeout(normalize, 250);
-    setTimeout(normalize, 700);
+    setTimeout(syncPosition, 250);
+    setTimeout(syncPosition, 800);
   }, true);
 
-  requestAnimationFrame(tick);
+  waitForImages();
+  requestAnimationFrame(animate);
 })();
 </script>
 
